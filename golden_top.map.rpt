@@ -1,0 +1,1092 @@
+Analysis & Synthesis report for golden_top
+Wed May 03 02:13:54 2017
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |maxv_5m570z_start_golden_top|uartState
+  9. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr11|state
+ 10. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr10|state
+ 11. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr09|state
+ 12. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr08|state
+ 13. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr07|state
+ 14. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr06|state
+ 15. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr05|state
+ 16. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr04|state
+ 17. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr03|state
+ 18. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr02|state
+ 19. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr01|state
+ 20. State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr00|state
+ 21. Registers Removed During Synthesis
+ 22. General Register Statistics
+ 23. Inverted Register Statistics
+ 24. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 25. Parameter Settings for User Entity Instance: Top-level Entity: |maxv_5m570z_start_golden_top
+ 26. Parameter Settings for User Entity Instance: async_receiver:RX
+ 27. Parameter Settings for User Entity Instance: async_receiver:RX|BaudTickGen:tickgen
+ 28. Parameter Settings for User Entity Instance: motorCtrl:mr00
+ 29. Parameter Settings for User Entity Instance: motorCtrl:mr01
+ 30. Parameter Settings for User Entity Instance: motorCtrl:mr02
+ 31. Parameter Settings for User Entity Instance: motorCtrl:mr03
+ 32. Parameter Settings for User Entity Instance: motorCtrl:mr04
+ 33. Parameter Settings for User Entity Instance: motorCtrl:mr05
+ 34. Parameter Settings for User Entity Instance: motorCtrl:mr06
+ 35. Parameter Settings for User Entity Instance: motorCtrl:mr07
+ 36. Parameter Settings for User Entity Instance: motorCtrl:mr08
+ 37. Parameter Settings for User Entity Instance: motorCtrl:mr09
+ 38. Parameter Settings for User Entity Instance: motorCtrl:mr10
+ 39. Parameter Settings for User Entity Instance: motorCtrl:mr11
+ 40. Port Connectivity Checks: "motorCtrl:mr11"
+ 41. Port Connectivity Checks: "motorCtrl:mr10"
+ 42. Port Connectivity Checks: "motorCtrl:mr09"
+ 43. Port Connectivity Checks: "motorCtrl:mr08"
+ 44. Port Connectivity Checks: "motorCtrl:mr07"
+ 45. Port Connectivity Checks: "motorCtrl:mr06"
+ 46. Port Connectivity Checks: "motorCtrl:mr05"
+ 47. Port Connectivity Checks: "motorCtrl:mr04"
+ 48. Port Connectivity Checks: "motorCtrl:mr03"
+ 49. Port Connectivity Checks: "motorCtrl:mr02"
+ 50. Port Connectivity Checks: "motorCtrl:mr01"
+ 51. Port Connectivity Checks: "motorCtrl:mr00"
+ 52. Port Connectivity Checks: "async_receiver:RX|BaudTickGen:tickgen"
+ 53. Port Connectivity Checks: "async_receiver:RX"
+ 54. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++-----------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Wed May 03 02:13:54 2017           ;
+; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name               ; golden_top                                      ;
+; Top-level Entity Name       ; maxv_5m570z_start_golden_top                    ;
+; Family                      ; MAX V                                           ;
+; Total logic elements        ; 1,218                                           ;
+; Total pins                  ; 110                                             ;
+; Total virtual pins          ; 0                                               ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                                   ;
++-----------------------------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                                  ;
++----------------------------------------------------------------------------+------------------------------+--------------------+
+; Option                                                                     ; Setting                      ; Default Value      ;
++----------------------------------------------------------------------------+------------------------------+--------------------+
+; Device                                                                     ; 5M570ZF256C4                 ;                    ;
+; Top-level entity name                                                      ; maxv_5m570z_start_golden_top ; golden_top         ;
+; Family name                                                                ; MAX V                        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                          ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                           ; On                 ;
+; Enable compact report table                                                ; Off                          ; Off                ;
+; Restructure Multiplexers                                                   ; Auto                         ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                          ; Off                ;
+; Preserve fewer node names                                                  ; On                           ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                          ; Off                ;
+; Verilog Version                                                            ; Verilog_2001                 ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993                    ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto                         ; Auto               ;
+; Safe State Machine                                                         ; Off                          ; Off                ;
+; Extract Verilog State Machines                                             ; On                           ; On                 ;
+; Extract VHDL State Machines                                                ; On                           ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                          ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000                         ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                          ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                           ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                           ; On                 ;
+; Parallel Synthesis                                                         ; On                           ; On                 ;
+; NOT Gate Push-Back                                                         ; On                           ; On                 ;
+; Power-Up Don't Care                                                        ; On                           ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                          ; Off                ;
+; Remove Duplicate Registers                                                 ; On                           ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                          ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                          ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                          ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                          ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                          ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                           ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                          ; Off                ;
+; Optimization Technique                                                     ; Balanced                     ; Balanced           ;
+; Carry Chain Length                                                         ; 70                           ; 70                 ;
+; Auto Carry Chains                                                          ; On                           ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                           ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                          ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto                         ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto                         ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                           ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                           ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                          ; Off                ;
+; Auto Resource Sharing                                                      ; Off                          ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                           ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                          ; Off                ;
+; Report Parameter Settings                                                  ; On                           ; On                 ;
+; Report Source Assignments                                                  ; On                           ; On                 ;
+; Report Connectivity Checks                                                 ; On                           ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                          ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                            ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation           ; Normal compilation ;
+; HDL message level                                                          ; Level2                       ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                          ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000                         ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000                         ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                          ; 100                ;
+; Clock MUX Protection                                                       ; On                           ; On                 ;
+; Block Design Naming                                                        ; Auto                         ; Auto               ;
+; Synthesis Effort                                                           ; Auto                         ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                           ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                          ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium                       ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto                         ; Auto               ;
+; Synthesis Seed                                                             ; 1                            ; 1                  ;
++----------------------------------------------------------------------------+------------------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                               ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                 ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+; async.v                          ; yes             ; User Verilog HDL File  ; C:/dev/polden-vert/golden_top/async.v                        ;         ;
+; maxv_5m570z_start_golden_top.v   ; yes             ; User Verilog HDL File  ; C:/dev/polden-vert/golden_top/maxv_5m570z_start_golden_top.v ;         ;
+; motorCtrl.v                      ; yes             ; User Verilog HDL File  ; C:/dev/polden-vert/golden_top/motorCtrl.v                    ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Total logic elements                        ; 1218      ;
+;     -- Combinational with no register       ; 606       ;
+;     -- Register only                        ; 21        ;
+;     -- Combinational with a register        ; 591       ;
+;                                             ;           ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 210       ;
+;     -- 3 input functions                    ; 222       ;
+;     -- 2 input functions                    ; 719       ;
+;     -- 1 input functions                    ; 45        ;
+;     -- 0 input functions                    ; 1         ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 572       ;
+;     -- arithmetic mode                      ; 646       ;
+;     -- qfbk mode                            ; 0         ;
+;     -- register cascade mode                ; 0         ;
+;     -- synchronous clear/load mode          ; 252       ;
+;     -- asynchronous clear/load mode         ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 612       ;
+; Total logic cells in carry chains           ; 696       ;
+; I/O pins                                    ; 110       ;
+; Maximum fan-out node                        ; CLK_SE_AR ;
+; Maximum fan-out                             ; 612       ;
+; Total fan-out                               ; 4407      ;
+; Average fan-out                             ; 3.32      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                     ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node    ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                 ; Library Name ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------------------+--------------+
+; |maxv_5m570z_start_golden_top ; 1218 (61)   ; 612          ; 0          ; 110  ; 0            ; 606 (22)     ; 21 (13)           ; 591 (26)         ; 696 (11)        ; 0 (0)      ; |maxv_5m570z_start_golden_top                                       ; work         ;
+;    |async_receiver:RX|        ; 41 (28)     ; 33           ; 0          ; 0    ; 0            ; 8 (7)        ; 8 (8)             ; 25 (13)          ; 13 (0)          ; 0 (0)      ; |maxv_5m570z_start_golden_top|async_receiver:RX                     ; work         ;
+;       |BaudTickGen:tickgen|   ; 13 (13)     ; 12           ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 12 (12)          ; 13 (13)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|async_receiver:RX|BaudTickGen:tickgen ; work         ;
+;    |motorCtrl:mr00|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr00                        ; work         ;
+;    |motorCtrl:mr01|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr01                        ; work         ;
+;    |motorCtrl:mr02|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr02                        ; work         ;
+;    |motorCtrl:mr03|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr03                        ; work         ;
+;    |motorCtrl:mr04|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr04                        ; work         ;
+;    |motorCtrl:mr05|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr05                        ; work         ;
+;    |motorCtrl:mr06|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr06                        ; work         ;
+;    |motorCtrl:mr07|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr07                        ; work         ;
+;    |motorCtrl:mr08|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr08                        ; work         ;
+;    |motorCtrl:mr09|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr09                        ; work         ;
+;    |motorCtrl:mr10|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr10                        ; work         ;
+;    |motorCtrl:mr11|           ; 93 (93)     ; 45           ; 0          ; 0    ; 0            ; 48 (48)      ; 0 (0)             ; 45 (45)          ; 56 (56)         ; 0 (0)      ; |maxv_5m570z_start_golden_top|motorCtrl:mr11                        ; work         ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|uartState                         ;
++--------------------+--------------------+-------------------+-------------------+
+; Name               ; uartState.uartIdle ; uartState.recvPos ; uartState.recvNum ;
++--------------------+--------------------+-------------------+-------------------+
+; uartState.uartIdle ; 0                  ; 0                 ; 0                 ;
+; uartState.recvNum  ; 1                  ; 0                 ; 1                 ;
+; uartState.recvPos  ; 1                  ; 1                 ; 0                 ;
++--------------------+--------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr11|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr10|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr09|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr08|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr07|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr06|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr05|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr04|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr03|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr02|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr01|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |maxv_5m570z_start_golden_top|motorCtrl:mr00|state                                                   ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; Name                      ; state.speedDownSpeedState ; state.speedConstState ; state.speedUpState ; state.idleState ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+; state.idleState           ; 0                         ; 0                     ; 0                  ; 0               ;
+; state.speedUpState        ; 0                         ; 0                     ; 1                  ; 1               ;
+; state.speedConstState     ; 0                         ; 1                     ; 0                  ; 1               ;
+; state.speedDownSpeedState ; 1                         ; 0                     ; 0                  ; 1               ;
++---------------------------+---------------------------+-----------------------+--------------------+-----------------+
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++----------------------------------------------+----------------------------------------+
+; Register name                                ; Reason for Removal                     ;
++----------------------------------------------+----------------------------------------+
+; motorCtrl:mr11|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr10|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr09|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr08|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr07|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr06|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr05|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr04|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr03|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr02|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr01|dir                           ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr00|dir                           ; Stuck at GND due to stuck port data_in ;
+; newPos[8..11]                                ; Stuck at GND due to stuck port data_in ;
+; async_receiver:RX|BaudTickGen:tickgen|Acc[2] ; Merged with counter[0]                 ;
+; uartState~7                                  ; Lost fanout                            ;
+; motorCtrl:mr11|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr11|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr11|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr10|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr10|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr10|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr09|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr09|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr09|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr08|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr08|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr08|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr07|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr07|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr07|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr06|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr06|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr06|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr05|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr05|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr05|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr04|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr04|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr04|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr03|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr03|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr03|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr02|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr02|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr02|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr01|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr01|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr01|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr00|state~6                       ; Lost fanout                            ;
+; motorCtrl:mr00|state~7                       ; Lost fanout                            ;
+; motorCtrl:mr00|state~8                       ; Lost fanout                            ;
+; motorCtrl:mr11|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr10|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr09|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr08|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr07|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr06|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr05|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr04|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr03|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr02|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr01|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; motorCtrl:mr00|state.speedUpState            ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 66       ;                                        ;
++----------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 612   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 252   ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 305   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; motorCtrl:mr11|deltaPos[2]              ; 3       ;
+; motorCtrl:mr11|deltaPos[5]              ; 3       ;
+; motorCtrl:mr11|deltaPos[6]              ; 3       ;
+; motorCtrl:mr10|deltaPos[2]              ; 3       ;
+; motorCtrl:mr10|deltaPos[5]              ; 3       ;
+; motorCtrl:mr10|deltaPos[6]              ; 3       ;
+; motorCtrl:mr09|deltaPos[2]              ; 3       ;
+; motorCtrl:mr09|deltaPos[5]              ; 3       ;
+; motorCtrl:mr09|deltaPos[6]              ; 3       ;
+; motorCtrl:mr08|deltaPos[2]              ; 3       ;
+; motorCtrl:mr08|deltaPos[5]              ; 3       ;
+; motorCtrl:mr08|deltaPos[6]              ; 3       ;
+; motorCtrl:mr07|deltaPos[2]              ; 3       ;
+; motorCtrl:mr07|deltaPos[5]              ; 3       ;
+; motorCtrl:mr07|deltaPos[6]              ; 3       ;
+; motorCtrl:mr06|deltaPos[2]              ; 3       ;
+; motorCtrl:mr06|deltaPos[5]              ; 3       ;
+; motorCtrl:mr06|deltaPos[6]              ; 3       ;
+; motorCtrl:mr05|deltaPos[2]              ; 3       ;
+; motorCtrl:mr05|deltaPos[5]              ; 3       ;
+; motorCtrl:mr05|deltaPos[6]              ; 3       ;
+; motorCtrl:mr04|deltaPos[2]              ; 3       ;
+; motorCtrl:mr04|deltaPos[5]              ; 3       ;
+; motorCtrl:mr04|deltaPos[6]              ; 3       ;
+; motorCtrl:mr03|deltaPos[2]              ; 3       ;
+; motorCtrl:mr03|deltaPos[5]              ; 3       ;
+; motorCtrl:mr03|deltaPos[6]              ; 3       ;
+; motorCtrl:mr02|deltaPos[2]              ; 3       ;
+; motorCtrl:mr02|deltaPos[5]              ; 3       ;
+; motorCtrl:mr02|deltaPos[6]              ; 3       ;
+; motorCtrl:mr01|deltaPos[2]              ; 3       ;
+; motorCtrl:mr01|deltaPos[5]              ; 3       ;
+; motorCtrl:mr01|deltaPos[6]              ; 3       ;
+; motorCtrl:mr00|deltaPos[2]              ; 3       ;
+; motorCtrl:mr00|deltaPos[5]              ; 3       ;
+; motorCtrl:mr00|deltaPos[6]              ; 3       ;
+; async_receiver:RX|RxD_bit               ; 4       ;
+; async_receiver:RX|Filter_cnt[0]         ; 3       ;
+; async_receiver:RX|Filter_cnt[1]         ; 3       ;
+; async_receiver:RX|RxD_sync[1]           ; 2       ;
+; async_receiver:RX|RxD_sync[0]           ; 1       ;
+; Total number of inverted registers = 41 ;         ;
++-----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr11|timerCounterInc[1] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr11|deltaPos[12]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr10|timerCounterInc[1] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr10|deltaPos[9]        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr09|timerCounterInc[0] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr09|deltaPos[9]        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr08|timerCounterInc[0] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr08|deltaPos[11]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr07|timerCounterInc[7] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr07|deltaPos[10]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr06|timerCounterInc[3] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr06|deltaPos[8]        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr05|timerCounterInc[6] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr05|deltaPos[10]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr04|timerCounterInc[4] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr04|deltaPos[12]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr03|timerCounterInc[3] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr03|deltaPos[15]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr02|timerCounterInc[4] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr02|deltaPos[12]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr01|timerCounterInc[0] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr01|deltaPos[15]       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr00|timerCounterInc[0] ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr00|deltaPos[9]        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|async_receiver:RX|Filter_cnt[1]   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr11|deltaPos[6]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr10|deltaPos[5]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr09|deltaPos[5]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr08|deltaPos[2]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr07|deltaPos[5]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr06|deltaPos[2]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr05|deltaPos[5]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr04|deltaPos[6]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr03|deltaPos[2]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr02|deltaPos[2]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr01|deltaPos[2]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |maxv_5m570z_start_golden_top|motorCtrl:mr00|deltaPos[5]        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |maxv_5m570z_start_golden_top ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; uartIdle       ; 0     ; Signed Integer                                                      ;
+; recvNum        ; 1     ; Signed Integer                                                      ;
+; recvPos        ; 2     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_receiver:RX ;
++----------------+----------+------------------------------------+
+; Parameter Name ; Value    ; Type                               ;
++----------------+----------+------------------------------------+
+; ClkFrequency   ; 10000000 ; Signed Integer                     ;
+; Baud           ; 230400   ; Signed Integer                     ;
+; Oversampling   ; 8        ; Signed Integer                     ;
++----------------+----------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: async_receiver:RX|BaudTickGen:tickgen ;
++----------------+----------+--------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                   ;
++----------------+----------+--------------------------------------------------------+
+; ClkFrequency   ; 10000000 ; Signed Integer                                         ;
+; Baud           ; 230400   ; Signed Integer                                         ;
+; Oversampling   ; 8        ; Signed Integer                                         ;
++----------------+----------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr00 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr01 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr02 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr03 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr04 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr05 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr06 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr07 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr08 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr09 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr10 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: motorCtrl:mr11 ;
++---------------------+----------+----------------------------+
+; Parameter Name      ; Value    ; Type                       ;
++---------------------+----------+----------------------------+
+; idleState           ; 0        ; Signed Integer             ;
+; speedUpState        ; 1        ; Signed Integer             ;
+; speedConstState     ; 2        ; Signed Integer             ;
+; speedDownSpeedState ; 3        ; Signed Integer             ;
+; speedDeviationCount ; 11110100 ; Unsigned Binary            ;
++---------------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr11"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr10"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr09"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr08"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr07"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr06"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr05"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr04"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr03"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr02"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr01"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "motorCtrl:mr00"                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                          ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; newPos       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "newPos[15..1]" will be connected to GND. ;
+; cur_position ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                         ;
++--------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "async_receiver:RX|BaudTickGen:tickgen" ;
++--------+-------+----------+---------------------------------------+
+; Port   ; Type  ; Severity ; Details                               ;
++--------+-------+----------+---------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                          ;
++--------+-------+----------+---------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "async_receiver:RX"                                                                                                  ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                  ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; RxD_idle        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; RxD_endofpacket ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed May 03 02:13:51 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off golden_top -c golden_top
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 4 design units, including 4 entities, in source file async.v
+    Info (12023): Found entity 1: async_transmitter
+    Info (12023): Found entity 2: async_receiver
+    Info (12023): Found entity 3: ASSERTION_ERROR
+    Info (12023): Found entity 4: BaudTickGen
+Info (12021): Found 1 design units, including 1 entities, in source file maxv_5m570z_start_golden_top.v
+    Info (12023): Found entity 1: maxv_5m570z_start_golden_top
+Info (12021): Found 1 design units, including 1 entities, in source file motorctrl.v
+    Info (12023): Found entity 1: motorCtrl
+Info (12127): Elaborating entity "maxv_5m570z_start_golden_top" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at maxv_5m570z_start_golden_top.v(51): truncated value with size 32 to match size of target (12)
+Warning (10230): Verilog HDL assignment warning at maxv_5m570z_start_golden_top.v(77): truncated value with size 8 to match size of target (4)
+Warning (10034): Output port "AGPIO[12..1]" at maxv_5m570z_start_golden_top.v(16) has no driver
+Info (12128): Elaborating entity "async_receiver" for hierarchy "async_receiver:RX"
+Info (12128): Elaborating entity "BaudTickGen" for hierarchy "async_receiver:RX|BaudTickGen:tickgen"
+Info (12128): Elaborating entity "motorCtrl" for hierarchy "motorCtrl:mr00"
+Warning (10230): Verilog HDL assignment warning at motorCtrl.v(93): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at motorCtrl.v(95): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at motorCtrl.v(98): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at motorCtrl.v(111): truncated value with size 32 to match size of target (8)
+Warning (12241): 13 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "AGPIO[1]" is stuck at GND
+    Warning (13410): Pin "AGPIO[2]" is stuck at GND
+    Warning (13410): Pin "AGPIO[3]" is stuck at GND
+    Warning (13410): Pin "AGPIO[4]" is stuck at GND
+    Warning (13410): Pin "AGPIO[5]" is stuck at GND
+    Warning (13410): Pin "AGPIO[6]" is stuck at GND
+    Warning (13410): Pin "AGPIO[7]" is stuck at GND
+    Warning (13410): Pin "AGPIO[8]" is stuck at GND
+    Warning (13410): Pin "AGPIO[9]" is stuck at GND
+    Warning (13410): Pin "AGPIO[10]" is stuck at GND
+    Warning (13410): Pin "AGPIO[11]" is stuck at GND
+    Warning (13410): Pin "AGPIO[12]" is stuck at GND
+    Warning (13410): Pin "AGPIO[13]" is stuck at GND
+    Warning (13410): Pin "AGPIO[15]" is stuck at GND
+    Warning (13410): Pin "AGPIO[17]" is stuck at GND
+    Warning (13410): Pin "AGPIO[19]" is stuck at GND
+    Warning (13410): Pin "AGPIO[21]" is stuck at GND
+    Warning (13410): Pin "AGPIO[23]" is stuck at GND
+    Warning (13410): Pin "AGPIO[25]" is stuck at GND
+    Warning (13410): Pin "AGPIO[27]" is stuck at GND
+    Warning (13410): Pin "AGPIO[29]" is stuck at GND
+    Warning (13410): Pin "AGPIO[31]" is stuck at GND
+    Warning (13410): Pin "AGPIO[33]" is stuck at GND
+    Warning (13410): Pin "AGPIO[35]" is stuck at GND
+Info (17049): 37 registers lost all their fanouts during netlist optimizations.
+Warning (21074): Design contains 72 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "USER_PB0"
+    Warning (15610): No output dependent on input pin "USER_PB1"
+    Warning (15610): No output dependent on input pin "CAP_PB_1"
+    Warning (15610): No output dependent on input pin "USER_LED0"
+    Warning (15610): No output dependent on input pin "USER_LED1"
+    Warning (15610): No output dependent on input pin "BGPIO[7]"
+    Warning (15610): No output dependent on input pin "BGPIO[8]"
+    Warning (15610): No output dependent on input pin "BGPIO[9]"
+    Warning (15610): No output dependent on input pin "BGPIO[10]"
+    Warning (15610): No output dependent on input pin "BGPIO[11]"
+    Warning (15610): No output dependent on input pin "BGPIO[12]"
+    Warning (15610): No output dependent on input pin "BGPIO[13]"
+    Warning (15610): No output dependent on input pin "BGPIO[14]"
+    Warning (15610): No output dependent on input pin "BGPIO[15]"
+    Warning (15610): No output dependent on input pin "BGPIO[16]"
+    Warning (15610): No output dependent on input pin "BGPIO[17]"
+    Warning (15610): No output dependent on input pin "BGPIO[18]"
+    Warning (15610): No output dependent on input pin "BGPIO[19]"
+    Warning (15610): No output dependent on input pin "BGPIO[20]"
+    Warning (15610): No output dependent on input pin "BGPIO[21]"
+    Warning (15610): No output dependent on input pin "BGPIO[22]"
+    Warning (15610): No output dependent on input pin "BGPIO[23]"
+    Warning (15610): No output dependent on input pin "BGPIO[24]"
+    Warning (15610): No output dependent on input pin "BGPIO[25]"
+    Warning (15610): No output dependent on input pin "BGPIO[26]"
+    Warning (15610): No output dependent on input pin "BGPIO[27]"
+    Warning (15610): No output dependent on input pin "BGPIO[28]"
+    Warning (15610): No output dependent on input pin "BGPIO[29]"
+    Warning (15610): No output dependent on input pin "BGPIO[30]"
+    Warning (15610): No output dependent on input pin "BGPIO[31]"
+    Warning (15610): No output dependent on input pin "BGPIO[32]"
+    Warning (15610): No output dependent on input pin "BGPIO[33]"
+    Warning (15610): No output dependent on input pin "BGPIO[34]"
+    Warning (15610): No output dependent on input pin "BGPIO[35]"
+    Warning (15610): No output dependent on input pin "BGPIO_P_1"
+    Warning (15610): No output dependent on input pin "BGPIO_N_1"
+    Warning (15610): No output dependent on input pin "BGPIO_P_2"
+    Warning (15610): No output dependent on input pin "BGPIO_N_2"
+    Warning (15610): No output dependent on input pin "BGPIO_P_3"
+    Warning (15610): No output dependent on input pin "BGPIO_N_3"
+    Warning (15610): No output dependent on input pin "MOTOR_1_FB_A"
+    Warning (15610): No output dependent on input pin "MOTOR_1_FB_B"
+    Warning (15610): No output dependent on input pin "MOTOR_1_CTRL"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[0]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[1]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[2]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[3]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[4]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_1[5]"
+    Warning (15610): No output dependent on input pin "MOTOR_2_FB_A"
+    Warning (15610): No output dependent on input pin "MOTOR_2_FB_B"
+    Warning (15610): No output dependent on input pin "MOTOR_2_CTRL"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[0]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[1]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[2]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[3]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[4]"
+    Warning (15610): No output dependent on input pin "MAX_MOTOR_2[5]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[0]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[1]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[2]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[3]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[4]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[5]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[6]"
+    Warning (15610): No output dependent on input pin "MAX_SPK[7]"
+    Warning (15610): No output dependent on input pin "I2C_PROM_SCL"
+    Warning (15610): No output dependent on input pin "I2C_PROM_SDA"
+    Warning (15610): No output dependent on input pin "SPI_MOSI"
+    Warning (15610): No output dependent on input pin "SPI_SCK"
+    Warning (15610): No output dependent on input pin "SPI_CSN"
+    Warning (15610): No output dependent on input pin "SPI_MISO"
+Info (21057): Implemented 1328 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 74 input pins
+    Info (21059): Implemented 36 output pins
+    Info (21061): Implemented 1218 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 106 warnings
+    Info: Peak virtual memory: 465 megabytes
+    Info: Processing ended: Wed May 03 02:13:54 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
+
+
