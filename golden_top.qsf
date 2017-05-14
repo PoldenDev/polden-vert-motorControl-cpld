@@ -47,10 +47,6 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 0
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
-set_location_assignment PIN_P2 -to AGPIO[1]
-set_location_assignment PIN_M4 -to AGPIO[2]
-set_location_assignment PIN_L4 -to AGPIO[3]
-set_location_assignment PIN_N3 -to AGPIO[4]
 set_location_assignment PIN_N2 -to AGPIO[5]
 set_location_assignment PIN_N1 -to AGPIO[6]
 set_location_assignment PIN_M3 -to AGPIO[7]
@@ -157,6 +153,13 @@ set_location_assignment PIN_R1 -to USER_LED1
 set_location_assignment PIN_M9 -to USER_PB0
 set_location_assignment PIN_R3 -to USER_PB1
 set_location_assignment PIN_C11 -to CAP_PB_1
+set_global_assignment -name VERILOG_FILE motorCtrlSimple.v
 set_global_assignment -name VERILOG_FILE async.v
 set_global_assignment -name VERILOG_FILE maxv_5m570z_start_golden_top.v
 set_global_assignment -name VERILOG_FILE motorCtrl.v
+set_global_assignment -name VERILOG_FILE ssp.v
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_location_assignment PIN_P2 -to AGPIO_1_SCK
+set_location_assignment PIN_M4 -to AGPIO_2_MOSI
+set_location_assignment PIN_L4 -to AGPIO_3_MISO
+set_location_assignment PIN_N3 -to AGPIO_4_SSEL
