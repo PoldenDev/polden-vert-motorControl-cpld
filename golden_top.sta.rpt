@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for golden_top
-Sun May 14 03:53:47 2017
+Sun May 14 06:34:08 2017
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -90,13 +90,13 @@ applicable agreement for further details.
 +------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
 
 
-+-------------------------------------------------+
-; Fmax Summary                                    ;
-+-----------+-----------------+------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
-+-----------+-----------------+------------+------+
-; 119.1 MHz ; 119.1 MHz       ; CLK_SE_AR  ;      ;
-+-----------+-----------------+------------+------+
++--------------------------------------------------+
+; Fmax Summary                                     ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 120.71 MHz ; 120.71 MHz      ; CLK_SE_AR  ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -105,7 +105,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------+--------+---------------+
 ; Clock     ; Slack  ; End Point TNS ;
 +-----------+--------+---------------+
-; CLK_SE_AR ; -7.396 ; -505.860      ;
+; CLK_SE_AR ; -7.284 ; -526.292      ;
 +-----------+--------+---------------+
 
 
@@ -114,7 +114,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------+-------+---------------+
 ; Clock     ; Slack ; End Point TNS ;
 +-----------+-------+---------------+
-; CLK_SE_AR ; 1.719 ; 0.000         ;
+; CLK_SE_AR ; 1.723 ; 0.000         ;
 +-----------+-------+---------------+
 
 
@@ -144,51 +144,49 @@ No paths to report.
 +--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
-; -7.396 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.136      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.259 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.999      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.174 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.914      ;
-; -7.162 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.902      ;
-; -7.077 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.817      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -7.060 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.800      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.998 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.738      ;
-; -6.963 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.703      ;
-; -6.929 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.669      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.862 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.602      ;
-; -6.844 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.584      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.828 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.568      ;
-; -6.818 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.558      ;
-; -6.765 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.505      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.284 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 8.024      ;
+; -7.213 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.953      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.171 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.911      ;
+; -7.100 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.840      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.085 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.825      ;
+; -7.014 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.754      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.987 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.727      ;
+; -6.916 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.656      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.877 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.617      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.856 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.596      ;
+; -6.806 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.546      ;
+; -6.753 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.493      ;
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
@@ -196,54 +194,56 @@ No paths to report.
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
 ; -6.743 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.483      ;
-; -6.730 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.470      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.723 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.463      ;
-; -6.668 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.408      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.662 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.402      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.642 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.382      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.629 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.369      ;
-; -6.626 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.366      ;
-; -6.572 ; divider[0][5]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.312      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.567 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.307      ;
-; -6.565 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.305      ;
-; -6.532 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.272      ;
-; -6.487 ; divider[0][1]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.227      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.431 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.171      ;
-; -6.393 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.133      ;
-; -6.378 ; divider[0][7]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.118      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.737 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.477      ;
+; -6.686 ; divider[0][3]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.426      ;
+; -6.666 ; motorCtrlSimple:mr00|clockCounter[3]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.406      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.657 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.397      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.640 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.380      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.639 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.379      ;
+; -6.569 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.309      ;
+; -6.568 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.308      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.559 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.299      ;
+; -6.554 ; divider[0][5]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.294      ;
+; -6.554 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.294      ;
+; -6.503 ; divider[0][1]                         ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.243      ;
+; -6.456 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.196      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.449 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.189      ;
+; -6.409 ; motorCtrlSimple:mr00|stepR            ; motorCtrlSimple:mr00|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.409 ; motorCtrlSimple:mr00|stepR            ; motorCtrlSimple:mr00|cur_position[18] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
 +--------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -252,106 +252,106 @@ No paths to report.
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
-; 1.719 ; SSP:ssp|recvdData[14]                 ; SSP:ssp|recvdData[15]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.793      ;
-; 1.721 ; SSP:ssp|recvdData[2]                  ; SSP:ssp|recvdData[3]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.795      ;
-; 1.730 ; SSP:ssp|MOSIr[1]                      ; SSP:ssp|recvdData[0]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.804      ;
-; 1.732 ; SSP:ssp|MOSIr[0]                      ; SSP:ssp|MOSIr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.806      ;
-; 1.745 ; divider[0][1]                         ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.819      ;
-; 1.745 ; SSP:ssp|recvdData[8]                  ; divider[0][8]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.819      ;
+; 1.723 ; SSP:ssp|recvdData[0]                  ; SSP:ssp|recvdData[1]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.797      ;
+; 1.730 ; SSP:ssp|recvdData[14]                 ; SSP:ssp|recvdData[15]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.804      ;
+; 1.733 ; SSP:ssp|recvdData[12]                 ; SSP:ssp|recvdData[13]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.807      ;
+; 1.734 ; divider[0][1]                         ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.808      ;
+; 1.734 ; SSP:ssp|recvdData[3]                  ; SSP:ssp|recvdData[4]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.808      ;
+; 1.742 ; SSP:ssp|MOSIr[0]                      ; SSP:ssp|MOSIr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.816      ;
+; 1.744 ; SSP:ssp|recvdData[1]                  ; SSP:ssp|recvdData[2]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.818      ;
+; 1.745 ; SSP:ssp|MOSIr[1]                      ; SSP:ssp|recvdData[0]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.819      ;
+; 1.745 ; SSP:ssp|recvdData[9]                  ; SSP:ssp|recvdData[10]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.819      ;
+; 1.752 ; SSP:ssp|SCKr[0]                       ; SSP:ssp|SCKr[1]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.826      ;
+; 1.769 ; SSP:ssp|SCKr[1]                       ; SSP:ssp|SCKr[2]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.843      ;
+; 1.770 ; SSP:ssp|recvdData[10]                 ; SSP:ssp|recvdData[11]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.844      ;
 ; 1.828 ; SSP:ssp|SSELr[2]                      ; SSP:ssp|wordDataSendLoc[0]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.902      ;
-; 1.990 ; SSP:ssp|recvdData[3]                  ; SSP:ssp|recvdData[4]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.064      ;
-; 1.990 ; SSP:ssp|recvdData[5]                  ; SSP:ssp|recvdData[6]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.064      ;
-; 2.001 ; SSP:ssp|recvdData[9]                  ; SSP:ssp|recvdData[10]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.075      ;
-; 2.002 ; SSP:ssp|recvdData[13]                 ; SSP:ssp|recvdData[14]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.076      ;
-; 2.012 ; SSP:ssp|recvdData[10]                 ; SSP:ssp|recvdData[11]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.086      ;
-; 2.024 ; SSP:ssp|recvdData[7]                  ; divider[0][7]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.098      ;
-; 2.028 ; SSP:ssp|recvdData[7]                  ; SSP:ssp|recvdData[8]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.102      ;
-; 2.133 ; SSP:ssp|SCK_risingedgeDeb             ; newWordRecvdR                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.207      ;
-; 2.144 ; motorCtrlSimple:mr00|step             ; motorCtrlSimple:mr00|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.218      ;
-; 2.169 ; SSP:ssp|recvdData[12]                 ; SSP:ssp|recvdData[13]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.243      ;
-; 2.171 ; SSP:ssp|recvdData[11]                 ; SSP:ssp|recvdData[12]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.245      ;
-; 2.178 ; SSP:ssp|recvdData[4]                  ; SSP:ssp|recvdData[5]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.252      ;
-; 2.310 ; SSP:ssp|bitcnt[1]                     ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.384      ;
-; 2.311 ; SSP:ssp|bitcnt[1]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.385      ;
-; 2.427 ; SSP:ssp|recvdData[0]                  ; SSP:ssp|recvdData[1]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.501      ;
-; 2.649 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[18] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.723      ;
-; 2.803 ; motorCtrlSimple:mr00|dir              ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
-; 2.803 ; motorCtrlSimple:mr00|cur_position[0]  ; motorCtrlSimple:mr00|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
-; 2.812 ; motorCtrlSimple:mr00|cur_position[9]  ; motorCtrlSimple:mr00|cur_position[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.813 ; motorCtrlSimple:mr00|cur_position[16] ; motorCtrlSimple:mr00|cur_position[16] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.815 ; SSP:ssp|wordDataSendLoc[4]            ; SSP:ssp|wordDataSendLoc[5]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.889      ;
-; 2.817 ; SSP:ssp|wordDataSendLoc[7]            ; SSP:ssp|wordDataSendLoc[8]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.891      ;
-; 2.822 ; motorCtrlSimple:mr00|cur_position[10] ; motorCtrlSimple:mr00|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
+; 2.001 ; SSP:ssp|recvdData[8]                  ; SSP:ssp|recvdData[9]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.075      ;
+; 2.001 ; SSP:ssp|recvdData[13]                 ; SSP:ssp|recvdData[14]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.075      ;
+; 2.021 ; SSP:ssp|recvdData[4]                  ; SSP:ssp|recvdData[5]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.095      ;
+; 2.032 ; SSP:ssp|recvdData[5]                  ; divider[0][5]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.106      ;
+; 2.036 ; SSP:ssp|recvdData[5]                  ; SSP:ssp|recvdData[6]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.110      ;
+; 2.066 ; SSP:ssp|bitcnt[1]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.140      ;
+; 2.153 ; divider[0][4]                         ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.227      ;
+; 2.174 ; SSP:ssp|recvdData[7]                  ; SSP:ssp|recvdData[8]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.248      ;
+; 2.175 ; divider[0][0]                         ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.249      ;
+; 2.190 ; divider[0][3]                         ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.264      ;
+; 2.207 ; SSP:ssp|recvdData[4]                  ; divider[0][4]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.281      ;
+; 2.277 ; SSP:ssp|bitcnt[3]                     ; SSP:ssp|bitcnt[3]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.351      ;
+; 2.328 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[0]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.402      ;
+; 2.331 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.405      ;
+; 2.409 ; SSP:ssp|recvdData[13]                 ; stepClockEna[0]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.483      ;
+; 2.432 ; SSP:ssp|recvdData[12]                 ; divider[0][12]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.506      ;
+; 2.457 ; SSP:ssp|recvdData[3]                  ; divider[0][3]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.531      ;
+; 2.523 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.597      ;
+; 2.524 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|bitcnt[0]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.598      ;
+; 2.743 ; SSP:ssp|bitcnt[2]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.817      ;
+; 2.803 ; motorCtrlSimple:mr00|cur_position[10] ; motorCtrlSimple:mr00|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
+; 2.805 ; SSP:ssp|wordDataSendLoc[4]            ; SSP:ssp|wordDataSendLoc[5]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.879      ;
+; 2.812 ; motorCtrlSimple:mr00|cur_position[0]  ; motorCtrlSimple:mr00|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
+; 2.813 ; motorCtrlSimple:mr00|cur_position[7]  ; motorCtrlSimple:mr00|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
+; 2.817 ; stepClockEna[0]                       ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.891      ;
+; 2.822 ; motorCtrlSimple:mr00|cur_position[11] ; motorCtrlSimple:mr00|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
+; 2.822 ; motorCtrlSimple:mr00|cur_position[1]  ; motorCtrlSimple:mr00|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
 ; 2.823 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr00|cur_position[18] ; motorCtrlSimple:mr00|cur_position[18] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr00|cur_position[11] ; motorCtrlSimple:mr00|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.827 ; SSP:ssp|wordDataSendLoc[1]            ; SSP:ssp|wordDataSendLoc[2]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.901      ;
-; 2.828 ; SSP:ssp|wordDataSendLoc[3]            ; SSP:ssp|wordDataSendLoc[4]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.902      ;
+; 2.823 ; motorCtrlSimple:mr00|cur_position[19] ; motorCtrlSimple:mr00|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; SSP:ssp|wordDataSendLoc[8]            ; SSP:ssp|wordDataSendLoc[9]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; motorCtrlSimple:mr00|cur_position[12] ; motorCtrlSimple:mr00|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; motorCtrlSimple:mr00|cur_position[9]  ; motorCtrlSimple:mr00|cur_position[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; motorCtrlSimple:mr00|cur_position[2]  ; motorCtrlSimple:mr00|cur_position[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 2.824 ; SSP:ssp|wordDataSendLoc[12]           ; SSP:ssp|wordDataSendLoc[13]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.898      ;
+; 2.824 ; SSP:ssp|wordDataSendLoc[9]            ; SSP:ssp|wordDataSendLoc[10]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.898      ;
+; 2.824 ; SSP:ssp|wordDataSendLoc[7]            ; SSP:ssp|wordDataSendLoc[8]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.898      ;
+; 2.829 ; SSP:ssp|wordDataSendLoc[6]            ; SSP:ssp|wordDataSendLoc[7]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.903      ;
 ; 2.833 ; motorCtrlSimple:mr00|clockCounter[6]  ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.907      ;
-; 2.836 ; SSP:ssp|SCKr[0]                       ; SSP:ssp|SCKr[1]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.910      ;
-; 2.847 ; divider[0][12]                        ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.921      ;
-; 2.850 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.924      ;
-; 2.853 ; motorCtrlSimple:mr00|clockCounter[8]  ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.927      ;
-; 2.858 ; motorCtrlSimple:mr00|step             ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.932      ;
-; 2.869 ; SSP:ssp|bitcnt[3]                     ; SSP:ssp|bitcnt[3]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.943      ;
-; 2.875 ; SSP:ssp|recvdData[8]                  ; SSP:ssp|recvdData[9]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.949      ;
-; 2.894 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[0]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.968      ;
-; 2.900 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.974      ;
-; 2.901 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.975      ;
-; 2.910 ; divider[0][2]                         ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.984      ;
-; 2.914 ; divider[0][8]                         ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.988      ;
-; 2.928 ; motorCtrlSimple:mr00|cur_position[14] ; motorCtrlSimple:mr00|cur_position[14] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.002      ;
-; 2.928 ; motorCtrlSimple:mr00|cur_position[12] ; motorCtrlSimple:mr00|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.002      ;
-; 2.938 ; motorCtrlSimple:mr00|cur_position[7]  ; motorCtrlSimple:mr00|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
-; 2.938 ; motorCtrlSimple:mr00|cur_position[2]  ; motorCtrlSimple:mr00|cur_position[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
-; 2.939 ; SSP:ssp|wordDataSendLoc[2]            ; SSP:ssp|wordDataSendLoc[3]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.013      ;
-; 2.941 ; stepClockEna[0]                       ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.015      ;
-; 2.942 ; moveDir[0]                            ; moveDir[0]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.016      ;
+; 2.842 ; motorCtrlSimple:mr00|clockCounter[7]  ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.916      ;
+; 2.872 ; divider[0][8]                         ; motorCtrlSimple:mr00|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.946      ;
+; 2.914 ; SSP:ssp|recvdData[9]                  ; divider[0][9]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.988      ;
+; 2.925 ; divider[0][12]                        ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.999      ;
+; 2.929 ; SSP:ssp|wordDataSendLoc[1]            ; SSP:ssp|wordDataSendLoc[2]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.003      ;
+; 2.931 ; SSP:ssp|wordDataSendLoc[14]           ; SSP:ssp|wordDataSendLoc[15]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.005      ;
+; 2.934 ; SSP:ssp|recvdData[10]                 ; divider[0][10]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.008      ;
+; 2.938 ; motorCtrlSimple:mr00|cur_position[18] ; motorCtrlSimple:mr00|cur_position[18] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.938 ; motorCtrlSimple:mr00|cur_position[13] ; motorCtrlSimple:mr00|cur_position[13] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.938 ; motorCtrlSimple:mr00|cur_position[8]  ; motorCtrlSimple:mr00|cur_position[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.938 ; SSP:ssp|wordDataSendLoc[2]            ; SSP:ssp|wordDataSendLoc[3]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.938 ; motorCtrlSimple:mr00|cur_position[5]  ; motorCtrlSimple:mr00|cur_position[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.938 ; motorCtrlSimple:mr00|cur_position[3]  ; motorCtrlSimple:mr00|cur_position[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.012      ;
+; 2.939 ; motorCtrlSimple:mr00|cur_position[6]  ; motorCtrlSimple:mr00|cur_position[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.013      ;
+; 2.941 ; SSP:ssp|recvdData[5]                  ; posReset                              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.015      ;
+; 2.943 ; SSP:ssp|wordDataSendLoc[3]            ; SSP:ssp|wordDataSendLoc[4]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.017      ;
 ; 2.948 ; motorCtrlSimple:mr00|clockCounter[1]  ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.022      ;
-; 2.948 ; motorCtrlSimple:mr00|cur_position[4]  ; motorCtrlSimple:mr00|cur_position[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.022      ;
-; 2.949 ; SSP:ssp|wordDataSendLoc[10]           ; SSP:ssp|wordDataSendLoc[11]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
-; 2.949 ; motorCtrlSimple:mr00|cur_position[5]  ; motorCtrlSimple:mr00|cur_position[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
-; 2.949 ; motorCtrlSimple:mr00|cur_position[3]  ; motorCtrlSimple:mr00|cur_position[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
-; 2.949 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
-; 2.950 ; SSP:ssp|recvdData[6]                  ; divider[0][6]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.024      ;
+; 2.948 ; motorCtrlSimple:mr00|cur_position[15] ; motorCtrlSimple:mr00|cur_position[15] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.022      ;
+; 2.949 ; motorCtrlSimple:mr00|cur_position[16] ; motorCtrlSimple:mr00|cur_position[16] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
+; 2.949 ; motorCtrlSimple:mr00|cur_position[14] ; motorCtrlSimple:mr00|cur_position[14] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.023      ;
+; 2.950 ; motorCtrlSimple:mr00|dir              ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.024      ;
+; 2.951 ; SSP:ssp|wordDataSendLoc[13]           ; SSP:ssp|wordDataSendLoc[14]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.025      ;
 ; 2.951 ; SSP:ssp|wordDataSendLoc[11]           ; SSP:ssp|wordDataSendLoc[12]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.025      ;
-; 2.952 ; SSP:ssp|wordDataSendLoc[5]            ; SSP:ssp|wordDataSendLoc[6]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.026      ;
-; 2.952 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.026      ;
-; 2.953 ; SSP:ssp|wordDataSendLoc[9]            ; SSP:ssp|wordDataSendLoc[10]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.027      ;
+; 2.952 ; divider[0][11]                        ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.026      ;
+; 2.953 ; SSP:ssp|wordDataSendLoc[10]           ; SSP:ssp|wordDataSendLoc[11]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.027      ;
 ; 2.954 ; SSP:ssp|recvdData[6]                  ; SSP:ssp|recvdData[7]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.028      ;
-; 2.954 ; SSP:ssp|wordDataSendLoc[6]            ; SSP:ssp|wordDataSendLoc[7]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.028      ;
-; 2.954 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.028      ;
-; 2.955 ; SSP:ssp|wordDataSendLoc[14]           ; SSP:ssp|wordDataSendLoc[15]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.029      ;
 ; 2.958 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.032      ;
 ; 2.958 ; motorCtrlSimple:mr00|clockCounter[2]  ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.032      ;
-; 2.958 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.032      ;
-; 2.959 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.033      ;
-; 2.960 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.034      ;
-; 2.960 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.034      ;
+; 2.960 ; SSP:ssp|recvdData[4]                  ; moveDir[0]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.034      ;
+; 2.960 ; divider[0][7]                         ; motorCtrlSimple:mr00|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.034      ;
 ; 2.961 ; motorCtrlSimple:mr00|clockCounter[4]  ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.035      ;
-; 2.961 ; moveDir[0]                            ; motorCtrlSimple:mr00|cur_position[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.035      ;
-; 2.965 ; SSP:ssp|bitcnt[2]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.039      ;
+; 2.962 ; motorCtrlSimple:mr00|step             ; motorCtrlSimple:mr00|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.036      ;
 ; 2.966 ; motorCtrlSimple:mr00|clockCounter[11] ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.040      ;
 ; 2.966 ; motorCtrlSimple:mr00|clockCounter[9]  ; motorCtrlSimple:mr00|clockCounter[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.040      ;
-; 2.970 ; SSP:ssp|bitcnt[2]                     ; SSP:ssp|bitcnt[3]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.044      ;
-; 2.981 ; SSP:ssp|wordDataSendLoc[12]           ; SSP:ssp|wordDataSendLoc[13]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.055      ;
-; 3.010 ; SSP:ssp|recvdData[10]                 ; divider[0][10]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.084      ;
-; 3.021 ; SSP:ssp|recvdData[11]                 ; divider[0][11]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.095      ;
-; 3.066 ; divider[0][3]                         ; motorCtrlSimple:mr00|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.140      ;
-; 3.086 ; divider[0][11]                        ; motorCtrlSimple:mr00|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.160      ;
-; 3.089 ; SSP:ssp|SCKr[1]                       ; SSP:ssp|SCKr[2]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.163      ;
-; 3.089 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|SSELr[2]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.163      ;
-; 3.111 ; divider[0][6]                         ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.185      ;
-; 3.117 ; SSP:ssp|SSELr[0]                      ; SSP:ssp|SSELr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.191      ;
-; 3.163 ; SSP:ssp|recvdData[9]                  ; divider[0][9]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.237      ;
-; 3.194 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|wordDataSendLoc[0]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.268      ;
+; 2.990 ; SSP:ssp|recvdData[2]                  ; divider[0][2]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.064      ;
+; 2.995 ; SSP:ssp|recvdData[2]                  ; SSP:ssp|recvdData[3]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.069      ;
+; 3.003 ; SSP:ssp|bitcnt[1]                     ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.077      ;
+; 3.017 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.091      ;
+; 3.092 ; SSP:ssp|SCK_risingedgeDeb             ; newWordRecvdR                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.166      ;
+; 3.101 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|SSELr[2]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.175      ;
+; 3.115 ; divider[0][10]                        ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.189      ;
+; 3.115 ; divider[0][2]                         ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.189      ;
+; 3.174 ; divider[0][6]                         ; motorCtrlSimple:mr00|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.248      ;
+; 3.183 ; SSP:ssp|recvdData[11]                 ; divider[0][11]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.257      ;
+; 3.184 ; SSP:ssp|recvdData[11]                 ; SSP:ssp|recvdData[12]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.258      ;
+; 3.196 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|wordDataSendLoc[0]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.270      ;
 ; 3.201 ; motorCtrlSimple:mr00|clockCounter[10] ; motorCtrlSimple:mr00|clockCounter[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.275      ;
-; 3.218 ; SSP:ssp|recvdData[4]                  ; moveDir[0]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.292      ;
-; 3.218 ; motorCtrlSimple:mr00|clockCounter[0]  ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.292      ;
-; 3.238 ; motorCtrlSimple:mr00|cur_position[15] ; motorCtrlSimple:mr00|cur_position[15] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.312      ;
-; 3.239 ; motorCtrlSimple:mr00|cur_position[17] ; motorCtrlSimple:mr00|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.313      ;
-; 3.244 ; motorCtrlSimple:mr00|cur_position[13] ; motorCtrlSimple:mr00|cur_position[13] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.318      ;
-; 3.255 ; SSP:ssp|recvdData[0]                  ; divider[0][0]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.329      ;
+; 3.220 ; motorCtrlSimple:mr00|cur_position[4]  ; motorCtrlSimple:mr00|cur_position[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.294      ;
+; 3.222 ; SSP:ssp|recvdData[7]                  ; divider[0][7]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 3.296      ;
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -468,10 +468,10 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; AGPIO_1_SCK  ; CLK_SE_AR  ; 1.844 ; 1.844 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_2_MOSI ; CLK_SE_AR  ; 2.651 ; 2.651 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_4_SSEL ; CLK_SE_AR  ; 2.161 ; 2.161 ; Rise       ; CLK_SE_AR       ;
-; USER_PB0     ; CLK_SE_AR  ; 7.153 ; 7.153 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_1_SCK  ; CLK_SE_AR  ; 3.614 ; 3.614 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_2_MOSI ; CLK_SE_AR  ; 4.259 ; 4.259 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_4_SSEL ; CLK_SE_AR  ; 2.146 ; 2.146 ; Rise       ; CLK_SE_AR       ;
+; USER_PB0     ; CLK_SE_AR  ; 2.043 ; 2.043 ; Rise       ; CLK_SE_AR       ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -480,43 +480,43 @@ No paths to report.
 +--------------+------------+--------+--------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +--------------+------------+--------+--------+------------+-----------------+
-; AGPIO_1_SCK  ; CLK_SE_AR  ; -1.510 ; -1.510 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_2_MOSI ; CLK_SE_AR  ; -2.317 ; -2.317 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_4_SSEL ; CLK_SE_AR  ; -1.826 ; -1.826 ; Rise       ; CLK_SE_AR       ;
-; USER_PB0     ; CLK_SE_AR  ; -2.826 ; -2.826 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_1_SCK  ; CLK_SE_AR  ; -3.280 ; -3.280 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_2_MOSI ; CLK_SE_AR  ; -3.925 ; -3.925 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_4_SSEL ; CLK_SE_AR  ; -1.811 ; -1.811 ; Rise       ; CLK_SE_AR       ;
+; USER_PB0     ; CLK_SE_AR  ; -1.709 ; -1.709 ; Rise       ; CLK_SE_AR       ;
 +--------------+------------+--------+--------+------------+-----------------+
 
 
-+--------------------------------------------------------------------------+
-; Clock to Output Times                                                    ;
-+--------------+------------+-------+-------+------------+-----------------+
-; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+--------------+------------+-------+-------+------------+-----------------+
-; AGPIO[*]     ; CLK_SE_AR  ; 9.071 ; 9.071 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[5]    ; CLK_SE_AR  ; 8.684 ; 8.684 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[7]    ; CLK_SE_AR  ; 8.070 ; 8.070 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[35]   ; CLK_SE_AR  ; 9.071 ; 9.071 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[36]   ; CLK_SE_AR  ; 8.826 ; 8.826 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_3_MISO ; CLK_SE_AR  ; 9.137 ; 9.137 ; Rise       ; CLK_SE_AR       ;
-; USER_LED0    ; CLK_SE_AR  ; 6.500 ; 6.500 ; Rise       ; CLK_SE_AR       ;
-; USER_LED1    ; CLK_SE_AR  ; 8.046 ; 8.046 ; Rise       ; CLK_SE_AR       ;
-+--------------+------------+-------+-------+------------+-----------------+
++----------------------------------------------------------------------------+
+; Clock to Output Times                                                      ;
++--------------+------------+--------+--------+------------+-----------------+
+; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++--------------+------------+--------+--------+------------+-----------------+
+; AGPIO[*]     ; CLK_SE_AR  ; 10.475 ; 10.475 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[5]    ; CLK_SE_AR  ; 10.475 ; 10.475 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[7]    ; CLK_SE_AR  ; 9.857  ; 9.857  ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[35]   ; CLK_SE_AR  ; 9.580  ; 9.580  ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[36]   ; CLK_SE_AR  ; 9.697  ; 9.697  ; Rise       ; CLK_SE_AR       ;
+; AGPIO_3_MISO ; CLK_SE_AR  ; 9.554  ; 9.554  ; Rise       ; CLK_SE_AR       ;
+; USER_LED0    ; CLK_SE_AR  ; 6.500  ; 6.500  ; Rise       ; CLK_SE_AR       ;
+; USER_LED1    ; CLK_SE_AR  ; 9.521  ; 9.521  ; Rise       ; CLK_SE_AR       ;
++--------------+------------+--------+--------+------------+-----------------+
 
 
-+--------------------------------------------------------------------------+
-; Minimum Clock to Output Times                                            ;
-+--------------+------------+-------+-------+------------+-----------------+
-; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+--------------+------------+-------+-------+------------+-----------------+
-; AGPIO[*]     ; CLK_SE_AR  ; 8.070 ; 8.070 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[5]    ; CLK_SE_AR  ; 8.684 ; 8.684 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[7]    ; CLK_SE_AR  ; 8.070 ; 8.070 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[35]   ; CLK_SE_AR  ; 9.071 ; 9.071 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[36]   ; CLK_SE_AR  ; 8.826 ; 8.826 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_3_MISO ; CLK_SE_AR  ; 9.137 ; 9.137 ; Rise       ; CLK_SE_AR       ;
-; USER_LED0    ; CLK_SE_AR  ; 6.500 ; 6.500 ; Rise       ; CLK_SE_AR       ;
-; USER_LED1    ; CLK_SE_AR  ; 8.046 ; 8.046 ; Rise       ; CLK_SE_AR       ;
-+--------------+------------+-------+-------+------------+-----------------+
++----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                              ;
++--------------+------------+--------+--------+------------+-----------------+
+; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++--------------+------------+--------+--------+------------+-----------------+
+; AGPIO[*]     ; CLK_SE_AR  ; 9.580  ; 9.580  ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[5]    ; CLK_SE_AR  ; 10.475 ; 10.475 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[7]    ; CLK_SE_AR  ; 9.857  ; 9.857  ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[35]   ; CLK_SE_AR  ; 9.580  ; 9.580  ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[36]   ; CLK_SE_AR  ; 9.697  ; 9.697  ; Rise       ; CLK_SE_AR       ;
+; AGPIO_3_MISO ; CLK_SE_AR  ; 9.554  ; 9.554  ; Rise       ; CLK_SE_AR       ;
+; USER_LED0    ; CLK_SE_AR  ; 6.500  ; 6.500  ; Rise       ; CLK_SE_AR       ;
+; USER_LED1    ; CLK_SE_AR  ; 9.521  ; 9.521  ; Rise       ; CLK_SE_AR       ;
++--------------+------------+--------+--------+------------+-----------------+
 
 
 +--------------------------------------------------------------------+
@@ -524,7 +524,7 @@ No paths to report.
 +------------+-----------+----------+----------+----------+----------+
 ; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+-----------+----------+----------+----------+----------+
-; CLK_SE_AR  ; CLK_SE_AR ; 1438     ; 0        ; 0        ; 0        ;
+; CLK_SE_AR  ; CLK_SE_AR ; 1541     ; 0        ; 0        ; 0        ;
 +------------+-----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -534,7 +534,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+-----------+----------+----------+----------+----------+
 ; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+-----------+----------+----------+----------+----------+
-; CLK_SE_AR  ; CLK_SE_AR ; 1438     ; 0        ; 0        ; 0        ;
+; CLK_SE_AR  ; CLK_SE_AR ; 1541     ; 0        ; 0        ; 0        ;
 +------------+-----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -559,7 +559,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 4     ; 4    ;
-; Unconstrained Input Port Paths  ; 24    ; 24   ;
+; Unconstrained Input Port Paths  ; 5     ; 5    ;
 ; Unconstrained Output Ports      ; 7     ; 7    ;
 ; Unconstrained Output Port Paths ; 7     ; 7    ;
 +---------------------------------+-------+------+
@@ -571,7 +571,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun May 14 03:53:45 2017
+    Info: Processing started: Sun May 14 06:34:06 2017
 Info: Command: quartus_sta golden_top -c golden_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -585,14 +585,14 @@ Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name CLK_SE_AR CLK_SE_AR
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -7.396
+Info (332146): Worst-case setup slack is -7.284
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -7.396      -505.860 CLK_SE_AR 
-Info (332146): Worst-case hold slack is 1.719
+    Info (332119):    -7.284      -526.292 CLK_SE_AR 
+Info (332146): Worst-case hold slack is 1.723
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):     1.719         0.000 CLK_SE_AR 
+    Info (332119):     1.723         0.000 CLK_SE_AR 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
@@ -604,8 +604,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 454 megabytes
-    Info: Processing ended: Sun May 14 03:53:47 2017
+    Info: Processing ended: Sun May 14 06:34:08 2017
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

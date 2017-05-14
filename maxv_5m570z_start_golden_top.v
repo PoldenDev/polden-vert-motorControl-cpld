@@ -116,7 +116,7 @@ input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO
 //		end
 //
 //end
-wire posReset = ~USER_PB0;
+reg posReset = 0;
 //assign USER_LED0 = stepClockEna[0];
 //assign USER_LED1 = stepClockEna[1];
 wire [19:0] curPosition[9:0];
@@ -142,7 +142,10 @@ reg newWordRecvdR;  always @(posedge CLK_SE_AR) newWordRecvdR <= newWordRecvd;
 wire newWordRecvd_risingedge = ((newWordRecvdR==1'b0)&&(newWordRecvd==1'b1));  
 wire newWordRecvd_fallingedge = ((newWordRecvdR==1'b1)&&(newWordRecvd==1'b0));  
 
-wire [15:0] dataToTransfer = curPosition[0][18:3];
+wire [15:0] dataToTransfer = curPosition[0][19:4];
+//reg  [15:0] dataToTransfer;
+reg AGPIO_4_SSELR;  always @(posedge CLK_SE_AR) AGPIO_4_SSELR <= AGPIO_4_SSEL;
+wire AGPIO_4_SSEL_fallingedge = ((AGPIO_4_SSELR==1'b1)&&(AGPIO_4_SSEL==1'b0)); 
 SSP ssp(.clk(CLK_SE_AR), .SCK(AGPIO_1_SCK), .MOSI(AGPIO_2_MOSI), .MISO(AGPIO_3_MISO), .SSEL(AGPIO_4_SSEL), .recvdData(SSPrecvdData), .word_received(newWordRecvd), .wordDataToSend(dataToTransfer), .SCK_risingedgeDeb(AGPIO[7]));
 
 parameter wait_cmd_state = 0;
@@ -153,23 +156,37 @@ reg [3:0] motorNum;
 
 reg [9:0] lowerPosSignal;
 assign AGPIO[5] = newWordRecvd;
+
+reg sendAnsState = 0;
 always @(posedge CLK_SE_AR) begin
 
 	if(newWordRecvd_risingedge && (SSPrecvdData[15]== 1'b0)) begin	
 		motorNum <= SSPrecvdData[3:0];
 		//dataToTransfer[15:0] <= 16'h1111;//curPosition[0][18:3];
-	end
-	
+	end	
 	else if(newWordRecvd_fallingedge && (SSPrecvdData[15]== 1'b0)) begin	
 		moveDir[0] <=  SSPrecvdData[4];	
-		
+		posReset <=   SSPrecvdData[5];	
+		//dataToTransfer <= 16'hbbbb;
+		sendAnsState<= 0;		
 	end	
-	else if(newWordRecvd_risingedge && (SSPrecvdData[15]== 1'b1)) begin				
+	else if(newWordRecvd_fallingedge && (SSPrecvdData[15]== 1'b1)) begin				
 		divider[0] <= SSPrecvdData[12:0];
 		stepClockEna[0] <= SSPrecvdData[13];								
+		//dataToTransfer <= 16'haaaa;
+		//state <= wait_cmd_state;		
+		sendAnsState<= 1;
+	end	
 		
-		//state <= wait_cmd_state;				
-	end
+//	if(AGPIO_4_SSEL_fallingedge ) begin	
+//	 if((sendAnsState== 1'b0)) begin
+//			dataToTransfer <= 16'hbbbb;
+//	 end
+//	 if((sendAnsState== 1'b1)) begin
+//			dataToTransfer <= 16'haaaa;
+//	  end
+//	end	
+	
 	//dataToTransfer[15:0] <= curPosition[0][18:3];//lowerPosSignal[9:0];
 	
 	//if(newWordRecvd_fallingedge && (SSPrecvdData[15]== 1'b1)) begin	

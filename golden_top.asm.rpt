@@ -1,5 +1,5 @@
 Assembler report for golden_top
-Sun May 14 03:53:44 2017
+Sun May 14 06:34:06 2017
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun May 14 03:53:44 2017 ;
+; Assembler Status      ; Successful - Sun May 14 06:34:06 2017 ;
 ; Revision Name         ; golden_top                            ;
 ; Top-level Entity Name ; maxv_5m570z_start_golden_top          ;
 ; Family                ; MAX V                                 ;
@@ -90,8 +90,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                  ;
 +----------------+--------------------------------------------------------------------------+
 ; Device         ; 5M570ZF256C4                                                             ;
-; JTAG usercode  ; 0x0033070C                                                               ;
-; Checksum       ; 0x0033074A                                                               ;
+; JTAG usercode  ; 0x0033131B                                                               ;
+; Checksum       ; 0x00331351                                                               ;
 +----------------+--------------------------------------------------------------------------+
 
 
@@ -101,13 +101,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun May 14 03:53:43 2017
+    Info: Processing started: Sun May 14 06:34:05 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off golden_top -c golden_top
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 429 megabytes
-    Info: Processing ended: Sun May 14 03:53:44 2017
+    Info: Processing ended: Sun May 14 06:34:06 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
