@@ -38,7 +38,7 @@ always @(posedge CLK) begin
 	if(reset) begin
 		cur_position <= 20'h0;	
 	end	
-	if(step_risingedge) begin
+	else if(step_risingedge) begin
 		if(moveDir==1'b1) begin
 			cur_position <= cur_position + 20'h1;
 			//cur_position <= cur_position + step;	
