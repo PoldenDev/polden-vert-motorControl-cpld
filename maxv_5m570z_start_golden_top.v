@@ -170,21 +170,44 @@ always @(posedge CLK_SE_AR) begin
 	if(newWordRecvd_risingedge) begin
 		case(SSPrecvdData[15:13]) 
 			3'd0: begin				//num reset
-				motorNum <= motorNumW; 		  //motorNum  not yet locked
-				posReset[motorNumW] <= SSPrecvdData[4];	//resetBit
-				dataToTransfer[15:0] <= curPositionW[motorNumW][15:0];
+				motorNum <= motorNumW; 		  //motorNum  not yet locked							
 			end					  
-			3'd1: begin	
-				moveDir[motorNum] <=  SSPrecvdData[0];	//dirBit				
+			3'd1: begin					
 				dataToTransfer[15:0] <= "OK";
 			end
 			3'd2: begin			//div
-				divider[motorNum] <= SSPrecvdData[12:0];				
+				
 				dataToTransfer[15:0] <= "OK";
 			end			
 			3'd3: begin			//ena
-				stepClockEna[motorNum] <= SSPrecvdData[0];	//enabit
+				
 				dataToTransfer[15:0] <= "OK";					
+			end			
+			3'd4: begin		   //empty. only get cur pos				
+			end
+			3'd5: begin							
+			end
+			3'd6: begin			//reserv				
+			end
+			3'd7: begin			//reserv			
+			end
+
+		endcase
+	end
+	if(newWordRecvd_fallingedge) begin
+			case(SSPrecvdData[15:13]) 
+			3'd0: begin				//num reset
+				posReset[motorNum] <= SSPrecvdData[4];	//resetBit
+				dataToTransfer[15:0] <= curPositionW[motorNum][15:0];
+			end					  
+			3'd1: begin	
+				moveDir[motorNum] <=  SSPrecvdData[0];	//dirBit				
+			end
+			3'd2: begin			//div
+				divider[motorNum] <= SSPrecvdData[12:0];				
+			end			
+			3'd3: begin			//ena
+				stepClockEna[motorNum] <= SSPrecvdData[0];	//enabit			
 			end			
 			3'd4: begin		   //empty. only get cur pos
 				dataToTransfer[15:0] <= curPositionW[motorNum][31:16];					
@@ -200,7 +223,9 @@ always @(posedge CLK_SE_AR) begin
 			end
 
 		endcase
+		
 	end
+	
 		
 //	if(AGPIO_4_SSEL_fallingedge ) begin	
 //	 if((sendAnsState== 1'b0)) begin
