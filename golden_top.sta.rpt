@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for golden_top
-Sat May 20 06:27:10 2017
+Thu Jun 29 03:41:00 2017
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -57,7 +57,7 @@ applicable agreement for further details.
 ; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
 ; Revision Name      ; golden_top                                                        ;
 ; Device Family      ; MAX V                                                             ;
-; Device Name        ; 5M570ZF256C4                                                      ;
+; Device Name        ; 5M1270ZT144C4                                                     ;
 ; Timing Models      ; Final                                                             ;
 ; Delay Model        ; Slow Model                                                        ;
 ; Rise/Fall Delays   ; Unavailable                                                       ;
@@ -96,18 +96,18 @@ applicable agreement for further details.
 +-----------+-----------------+------------+------+
 ; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
 +-----------+-----------------+------------+------+
-; 88.21 MHz ; 88.21 MHz       ; CLK_SE_AR  ;      ;
+; 129.5 MHz ; 129.5 MHz       ; CLK_SE_AR  ;      ;
 +-----------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+-------------------------------------+
-; Setup Summary                       ;
-+-----------+---------+---------------+
-; Clock     ; Slack   ; End Point TNS ;
-+-----------+---------+---------------+
-; CLK_SE_AR ; -10.337 ; -2833.108     ;
-+-----------+---------+---------------+
++------------------------------------+
+; Setup Summary                      ;
++-----------+--------+---------------+
+; Clock     ; Slack  ; End Point TNS ;
++-----------+--------+---------------+
+; CLK_SE_AR ; -6.722 ; -2985.106     ;
++-----------+--------+---------------+
 
 
 +-----------------------------------+
@@ -115,7 +115,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-----------+-------+---------------+
 ; Clock     ; Slack ; End Point TNS ;
 +-----------+-------+---------------+
-; CLK_SE_AR ; 1.734 ; 0.000         ;
+; CLK_SE_AR ; 1.118 ; 0.000         ;
 +-----------+-------+---------------+
 
 
@@ -140,112 +140,112 @@ No paths to report.
 +-----------+--------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'CLK_SE_AR'                                                                                                                         ;
-+---------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
-; Slack   ; From Node                             ; To Node            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+---------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
-; -10.337 ; motorNum[2]                           ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 11.077     ;
-; -10.168 ; SSP:ssp|recvdData[15]                 ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.908     ;
-; -10.048 ; SSP:ssp|recvdData[15]                 ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.788     ;
-; -9.955  ; motorNum[2]                           ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.695     ;
-; -9.914  ; motorNum[3]                           ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.654     ;
-; -9.877  ; motorCtrlSimple:mr01|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.617     ;
-; -9.794  ; motorNum[3]                           ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.534     ;
-; -9.677  ; motorNum[1]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.417     ;
-; -9.587  ; motorNum[2]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.327     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.585  ; SSP:ssp|recvdData[14]                 ; divider[1][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.325     ;
-; -9.564  ; SSP:ssp|recvdData[14]                 ; divider[1][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.304     ;
-; -9.556  ; motorNum[1]                           ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.296     ;
-; -9.554  ; motorNum[1]                           ; stepClockEna[1]    ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.294     ;
-; -9.554  ; SSP:ssp|recvdData[15]                 ; posReset[1]        ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.294     ;
-; -9.529  ; motorNum[1]                           ; moveDir[1]         ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.269     ;
-; -9.517  ; motorCtrlSimple:mr00|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.257     ;
-; -9.489  ; motorNum[0]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.229     ;
-; -9.462  ; motorNum[0]                           ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.202     ;
-; -9.450  ; motorCtrlSimple:mr03|cur_position[3]  ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.190     ;
-; -9.447  ; motorNum[1]                           ; dataToTransfer[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.187     ;
-; -9.436  ; motorNum[1]                           ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.176     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.391  ; SSP:ssp|recvdData[14]                 ; divider[0][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.131     ;
-; -9.383  ; SSP:ssp|recvdData[13]                 ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.123     ;
-; -9.377  ; motorNum[0]                           ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; motorNum[0]                           ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; motorNum[0]                           ; divider[4][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; SSP:ssp|recvdData[14]                 ; divider[0][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; SSP:ssp|recvdData[14]                 ; divider[0][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; SSP:ssp|recvdData[14]                 ; divider[0][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.377  ; motorNum[0]                           ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.117     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.367  ; SSP:ssp|recvdData[14]                 ; divider[3][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.107     ;
-; -9.366  ; SSP:ssp|recvdData[15]                 ; posReset[4]        ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.106     ;
-; -9.365  ; SSP:ssp|recvdData[15]                 ; posReset[0]        ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.105     ;
-; -9.348  ; SSP:ssp|recvdData[14]                 ; divider[3][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.088     ;
-; -9.348  ; SSP:ssp|recvdData[14]                 ; divider[3][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.088     ;
-; -9.348  ; SSP:ssp|recvdData[14]                 ; divider[3][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.088     ;
-; -9.348  ; SSP:ssp|recvdData[14]                 ; divider[3][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.088     ;
-; -9.348  ; SSP:ssp|recvdData[14]                 ; divider[3][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.088     ;
-; -9.329  ; SSP:ssp|recvdData[15]                 ; posReset[3]        ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.069     ;
-; -9.299  ; SSP:ssp|recvdData[14]                 ; divider[1][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.039     ;
-; -9.299  ; SSP:ssp|recvdData[14]                 ; divider[1][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.039     ;
-; -9.299  ; SSP:ssp|recvdData[14]                 ; divider[1][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.039     ;
-; -9.299  ; SSP:ssp|recvdData[15]                 ; posReset[5]        ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.039     ;
-; -9.285  ; SSP:ssp|SCK_risingedgeDeb             ; dataToTransfer[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.025     ;
-; -9.263  ; SSP:ssp|recvdData[13]                 ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 10.003     ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.249  ; SSP:ssp|recvdData[15]                 ; divider[1][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.989      ;
-; -9.241  ; SSP:ssp|recvdData[14]                 ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.981      ;
-; -9.241  ; SSP:ssp|recvdData[14]                 ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.981      ;
-; -9.241  ; SSP:ssp|recvdData[14]                 ; divider[4][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.981      ;
-; -9.241  ; SSP:ssp|recvdData[14]                 ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.981      ;
-; -9.230  ; motorCtrlSimple:mr02|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.970      ;
-; -9.228  ; SSP:ssp|recvdData[15]                 ; divider[1][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.968      ;
-; -9.211  ; motorCtrlSimple:mr02|cur_position[3]  ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.951      ;
-; -9.167  ; motorNum[0]                           ; stepClockEna[1]    ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.907      ;
-; -9.165  ; SSP:ssp|SCK_risingedgeDeb             ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.905      ;
-; -9.142  ; motorNum[0]                           ; moveDir[1]         ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.882      ;
-; -9.131  ; motorCtrlSimple:mr02|cur_position[5]  ; dataToTransfer[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.871      ;
-; -9.117  ; motorCtrlSimple:mr01|cur_position[12] ; dataToTransfer[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.857      ;
-; -9.062  ; motorNum[1]                           ; dataToTransfer[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.802      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.055  ; SSP:ssp|recvdData[15]                 ; divider[0][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.795      ;
-; -9.054  ; motorCtrlSimple:mr03|cur_position[11] ; dataToTransfer[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.794      ;
-; -9.052  ; motorNum[3]                           ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.792      ;
-; -9.052  ; motorNum[3]                           ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.792      ;
-; -9.052  ; motorNum[3]                           ; divider[4][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.792      ;
-; -9.052  ; motorNum[3]                           ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.792      ;
-; -9.044  ; motorNum[2]                           ; stepClockEna[1]    ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.784      ;
-; -9.041  ; SSP:ssp|recvdData[15]                 ; divider[0][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.781      ;
-; -9.041  ; SSP:ssp|recvdData[15]                 ; divider[0][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.781      ;
-; -9.041  ; SSP:ssp|recvdData[15]                 ; divider[0][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.781      ;
-; -9.031  ; SSP:ssp|recvdData[15]                 ; divider[3][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 9.771      ;
-+---------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'CLK_SE_AR'                                                                                                                        ;
++--------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
+; -6.722 ; motorNum[1]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.451      ;
+; -6.664 ; motorNum[3]                           ; divider[5][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.393      ;
+; -6.501 ; motorCtrlSimple:mr00|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.230      ;
+; -6.496 ; SSP:ssp|recvdData[15]                 ; divider[9][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.225      ;
+; -6.496 ; SSP:ssp|recvdData[15]                 ; divider[9][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.225      ;
+; -6.440 ; motorCtrlSimple:mr01|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.169      ;
+; -6.436 ; motorNum[1]                           ; divider[6][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.165      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.420 ; SSP:ssp|recvdData[15]                 ; divider[9][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.149      ;
+; -6.395 ; SSP:ssp|recvdData[15]                 ; divider[6][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.124      ;
+; -6.393 ; motorNum[3]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.122      ;
+; -6.358 ; SSP:ssp|recvdData[15]                 ; divider[5][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.087      ;
+; -6.348 ; motorNum[3]                           ; divider[6][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.077      ;
+; -6.330 ; motorCtrlSimple:mr06|cur_position[2]  ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.059      ;
+; -6.309 ; motorCtrlSimple:mr07|cur_position[1]  ; dataToTransfer[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.038      ;
+; -6.300 ; motorNum[3]                           ; divider[5][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.300 ; motorNum[3]                           ; divider[5][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.300 ; motorNum[3]                           ; divider[5][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.300 ; motorNum[3]                           ; divider[5][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.300 ; motorNum[3]                           ; divider[5][7]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.300 ; motorNum[3]                           ; divider[5][8]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.029      ;
+; -6.285 ; motorNum[0]                           ; dataToTransfer[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.014      ;
+; -6.282 ; SSP:ssp|recvdData[15]                 ; divider[4][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.011      ;
+; -6.282 ; SSP:ssp|recvdData[15]                 ; divider[4][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.011      ;
+; -6.282 ; SSP:ssp|recvdData[15]                 ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.011      ;
+; -6.282 ; SSP:ssp|recvdData[15]                 ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.011      ;
+; -6.272 ; SSP:ssp|recvdData[15]                 ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 7.001      ;
+; -6.256 ; SSP:ssp|recvdData[15]                 ; divider[4][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.985      ;
+; -6.256 ; SSP:ssp|recvdData[15]                 ; divider[4][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.985      ;
+; -6.254 ; motorNum[3]                           ; divider[9][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.983      ;
+; -6.254 ; motorNum[3]                           ; divider[9][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.983      ;
+; -6.250 ; motorCtrlSimple:mr00|cur_position[9]  ; dataToTransfer[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.979      ;
+; -6.230 ; motorNum[3]                           ; divider[4][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.959      ;
+; -6.230 ; motorNum[3]                           ; divider[4][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.959      ;
+; -6.230 ; motorNum[3]                           ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.959      ;
+; -6.230 ; motorNum[3]                           ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.959      ;
+; -6.222 ; motorNum[3]                           ; divider[5][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.222 ; motorNum[3]                           ; divider[5][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.222 ; motorNum[3]                           ; divider[5][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.222 ; motorNum[3]                           ; divider[5][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.222 ; motorNum[3]                           ; divider[5][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.222 ; motorNum[3]                           ; divider[5][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.951      ;
+; -6.220 ; motorNum[3]                           ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.949      ;
+; -6.206 ; motorNum[0]                           ; divider[6][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.935      ;
+; -6.204 ; motorNum[3]                           ; divider[4][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.933      ;
+; -6.204 ; motorNum[3]                           ; divider[4][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.933      ;
+; -6.198 ; motorNum[3]                           ; divider[1][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.927      ;
+; -6.198 ; motorNum[3]                           ; divider[1][11]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.927      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][3]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.190 ; SSP:ssp|recvdData[15]                 ; divider[8][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.919      ;
+; -6.189 ; motorNum[0]                           ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.918      ;
+; -6.178 ; motorNum[3]                           ; divider[9][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.178 ; motorNum[3]                           ; divider[9][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.178 ; motorNum[3]                           ; divider[9][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.178 ; motorNum[3]                           ; divider[9][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.178 ; motorNum[3]                           ; divider[9][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.178 ; motorNum[3]                           ; divider[9][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.907      ;
+; -6.176 ; motorCtrlSimple:mr04|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.905      ;
+; -6.173 ; motorNum[0]                           ; dataToTransfer[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.902      ;
+; -6.169 ; motorCtrlSimple:mr08|cur_position[2]  ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.898      ;
+; -6.160 ; motorNum[1]                           ; divider[5][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.889      ;
+; -6.154 ; motorNum[1]                           ; dataToTransfer[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.883      ;
+; -6.149 ; motorCtrlSimple:mr03|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.878      ;
+; -6.149 ; motorCtrlSimple:mr01|cur_position[9]  ; dataToTransfer[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.878      ;
+; -6.137 ; motorCtrlSimple:mr07|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.866      ;
+; -6.128 ; motorNum[2]                           ; divider[9][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.857      ;
+; -6.128 ; motorNum[2]                           ; divider[9][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.857      ;
+; -6.123 ; motorNum[1]                           ; divider[4][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.852      ;
+; -6.123 ; motorNum[1]                           ; divider[4][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.852      ;
+; -6.123 ; motorNum[1]                           ; divider[4][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.852      ;
+; -6.123 ; motorNum[1]                           ; divider[4][10]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.852      ;
+; -6.115 ; motorCtrlSimple:mr02|cur_position[2]  ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.844      ;
+; -6.113 ; motorNum[1]                           ; divider[4][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.842      ;
+; -6.102 ; motorCtrlSimple:mr02|cur_position[18] ; dataToTransfer[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.831      ;
+; -6.097 ; motorNum[1]                           ; divider[4][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.826      ;
+; -6.097 ; motorNum[1]                           ; divider[4][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.826      ;
+; -6.084 ; motorCtrlSimple:mr04|cur_position[1]  ; dataToTransfer[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.813      ;
+; -6.068 ; SSP:ssp|recvdData[13]                 ; divider[9][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.797      ;
+; -6.068 ; SSP:ssp|recvdData[13]                 ; divider[9][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.797      ;
+; -6.061 ; motorCtrlSimple:mr05|cur_position[9]  ; dataToTransfer[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.790      ;
+; -6.058 ; motorNum[3]                           ; dataToTransfer[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.787      ;
+; -6.052 ; motorNum[2]                           ; divider[9][1]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.052 ; motorNum[2]                           ; divider[9][2]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.052 ; motorNum[2]                           ; divider[9][4]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.052 ; motorNum[2]                           ; divider[9][5]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.052 ; motorNum[2]                           ; divider[9][6]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.052 ; motorNum[2]                           ; divider[9][0]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.781      ;
+; -6.044 ; motorNum[1]                           ; dataToTransfer[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.773      ;
+; -6.020 ; motorNum[3]                           ; divider[3][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.749      ;
+; -6.003 ; motorNum[0]                           ; divider[9][9]      ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.732      ;
+; -6.003 ; motorNum[0]                           ; divider[9][12]     ; CLK_SE_AR    ; CLK_SE_AR   ; 1.000        ; 0.000      ; 6.732      ;
++--------+---------------------------------------+--------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -253,106 +253,106 @@ No paths to report.
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                             ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
-; 1.734 ; SSP:ssp|recvdData[8]                  ; divider[3][8]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.808      ;
-; 1.739 ; divider[2][12]                        ; motorCtrlSimple:mr02|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.813      ;
-; 1.739 ; divider[1][12]                        ; motorCtrlSimple:mr01|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.813      ;
-; 1.739 ; divider[0][12]                        ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.813      ;
-; 1.742 ; divider[0][0]                         ; motorCtrlSimple:mr00|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.816      ;
-; 1.745 ; SSP:ssp|recvdData[6]                  ; divider[1][6]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.819      ;
-; 1.752 ; SSP:ssp|recvdData[11]                 ; SSP:ssp|recvdData[12]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.826      ;
-; 1.754 ; SSP:ssp|recvdData[11]                 ; divider[5][11]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.828      ;
-; 1.759 ; SSP:ssp|recvdData[3]                  ; SSP:ssp|recvdData[4]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.833      ;
-; 1.762 ; SSP:ssp|recvdData[3]                  ; divider[0][3]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.836      ;
-; 1.764 ; SSP:ssp|recvdData[7]                  ; SSP:ssp|recvdData[8]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.838      ;
-; 1.764 ; SSP:ssp|recvdData[7]                  ; divider[3][7]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.838      ;
-; 1.778 ; SSP:ssp|SCKr[0]                       ; SSP:ssp|SCKr[1]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.852      ;
-; 1.778 ; SSP:ssp|recvdData[14]                 ; SSP:ssp|recvdData[15]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.852      ;
-; 1.802 ; SSP:ssp|SCKr[1]                       ; SSP:ssp|SCKr[2]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.876      ;
-; 1.991 ; SSP:ssp|recvdData[12]                 ; divider[5][12]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.065      ;
-; 2.000 ; motorCtrlSimple:mr04|dir              ; motorCtrlSimple:mr04|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.074      ;
-; 2.010 ; motorCtrlSimple:mr00|cur_position[19] ; motorCtrlSimple:mr00|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.084      ;
-; 2.011 ; SSP:ssp|MOSIr[0]                      ; SSP:ssp|MOSIr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.085      ;
-; 2.020 ; posReset[2]                           ; posReset[2]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.094      ;
-; 2.062 ; SSP:ssp|bitcnt[3]                     ; SSP:ssp|bitcnt[3]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.136      ;
-; 2.125 ; divider[0][2]                         ; motorCtrlSimple:mr00|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.199      ;
-; 2.130 ; divider[2][4]                         ; motorCtrlSimple:mr02|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.204      ;
-; 2.143 ; divider[1][4]                         ; motorCtrlSimple:mr01|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.217      ;
-; 2.151 ; divider[1][2]                         ; motorCtrlSimple:mr01|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.225      ;
-; 2.155 ; divider[4][8]                         ; motorCtrlSimple:mr04|clockCounter[8]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.229      ;
-; 2.166 ; divider[4][6]                         ; motorCtrlSimple:mr04|clockCounter[6]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.240      ;
-; 2.166 ; divider[1][1]                         ; motorCtrlSimple:mr01|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.240      ;
-; 2.168 ; divider[0][4]                         ; motorCtrlSimple:mr00|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.242      ;
-; 2.169 ; divider[0][1]                         ; motorCtrlSimple:mr00|clockCounter[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.243      ;
-; 2.171 ; divider[2][3]                         ; motorCtrlSimple:mr02|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.245      ;
-; 2.186 ; motorCtrlSimple:mr04|step             ; motorCtrlSimple:mr04|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.260      ;
-; 2.187 ; motorCtrlSimple:mr03|step             ; motorCtrlSimple:mr03|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.261      ;
-; 2.188 ; motorCtrlSimple:mr01|step             ; motorCtrlSimple:mr01|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.262      ;
-; 2.198 ; SSP:ssp|recvdData[5]                  ; divider[4][5]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.272      ;
-; 2.203 ; SSP:ssp|MOSIr[1]                      ; SSP:ssp|recvdData[0]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.277      ;
-; 2.213 ; SSP:ssp|recvdData[5]                  ; divider[1][5]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.287      ;
-; 2.214 ; SSP:ssp|recvdData[5]                  ; SSP:ssp|recvdData[6]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.288      ;
-; 2.256 ; motorCtrlSimple:mr00|dir              ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.330      ;
-; 2.267 ; SSP:ssp|recvdData[9]                  ; SSP:ssp|recvdData[10]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.341      ;
-; 2.284 ; posReset[0]                           ; posReset[0]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.358      ;
-; 2.292 ; SSP:ssp|SCK_risingedgeDeb             ; newWordRecvdR                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.366      ;
-; 2.335 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[0]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.409      ;
-; 2.341 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|bitcnt[1]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.415      ;
-; 2.344 ; SSP:ssp|SSELr[1]                      ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.418      ;
-; 2.390 ; SSP:ssp|bitcnt[0]                     ; SSP:ssp|bitcnt[2]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.464      ;
-; 2.424 ; motorCtrlSimple:mr00|clockCounter[12] ; motorCtrlSimple:mr00|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.498      ;
-; 2.425 ; motorCtrlSimple:mr01|clockCounter[12] ; motorCtrlSimple:mr01|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.499      ;
-; 2.426 ; motorCtrlSimple:mr02|clockCounter[12] ; motorCtrlSimple:mr02|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.500      ;
-; 2.438 ; motorCtrlSimple:mr04|clockCounter[12] ; motorCtrlSimple:mr04|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.512      ;
-; 2.449 ; motorCtrlSimple:mr03|clockCounter[12] ; motorCtrlSimple:mr03|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.523      ;
-; 2.747 ; SSP:ssp|recvdData[0]                  ; moveDir[4]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.821      ;
-; 2.803 ; moveDir[0]                            ; moveDir[0]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
-; 2.803 ; motorCtrlSimple:mr04|cur_position[10] ; motorCtrlSimple:mr04|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
-; 2.803 ; motorCtrlSimple:mr05|cur_position[0]  ; motorCtrlSimple:mr05|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.877      ;
-; 2.804 ; motorCtrlSimple:mr01|dir              ; motorCtrlSimple:mr01|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.878      ;
-; 2.806 ; SSP:ssp|wordDataSendLoc[12]           ; SSP:ssp|wordDataSendLoc[13]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.880      ;
-; 2.812 ; motorCtrlSimple:mr05|cur_position[10] ; motorCtrlSimple:mr05|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr02|cur_position[10] ; motorCtrlSimple:mr02|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr01|cur_position[10] ; motorCtrlSimple:mr01|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr03|cur_position[1]  ; motorCtrlSimple:mr03|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr04|cur_position[0]  ; motorCtrlSimple:mr04|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr02|cur_position[0]  ; motorCtrlSimple:mr02|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr01|cur_position[0]  ; motorCtrlSimple:mr01|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.812 ; motorCtrlSimple:mr00|cur_position[0]  ; motorCtrlSimple:mr00|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.886      ;
-; 2.813 ; posReset[4]                           ; posReset[4]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr03|cur_position[9]  ; motorCtrlSimple:mr03|cur_position[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr04|cur_position[7]  ; motorCtrlSimple:mr04|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr02|cur_position[7]  ; motorCtrlSimple:mr02|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr01|cur_position[7]  ; motorCtrlSimple:mr01|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr00|cur_position[7]  ; motorCtrlSimple:mr00|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr02|cur_position[17] ; motorCtrlSimple:mr02|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr01|cur_position[17] ; motorCtrlSimple:mr01|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr05|cur_position[17] ; motorCtrlSimple:mr05|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.813 ; motorCtrlSimple:mr03|cur_position[0]  ; motorCtrlSimple:mr03|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.887      ;
-; 2.814 ; moveDir[4]                            ; moveDir[4]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.888      ;
-; 2.814 ; SSP:ssp|wordDataSendLoc[11]           ; SSP:ssp|wordDataSendLoc[12]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.888      ;
-; 2.815 ; SSP:ssp|wordDataSendLoc[3]            ; SSP:ssp|wordDataSendLoc[4]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.889      ;
-; 2.816 ; SSP:ssp|wordDataSendLoc[6]            ; SSP:ssp|wordDataSendLoc[7]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.890      ;
-; 2.817 ; SSP:ssp|wordDataSendLoc[2]            ; SSP:ssp|wordDataSendLoc[3]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.891      ;
-; 2.822 ; motorCtrlSimple:mr04|cur_position[11] ; motorCtrlSimple:mr04|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr05|cur_position[11] ; motorCtrlSimple:mr05|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr02|cur_position[11] ; motorCtrlSimple:mr02|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr01|cur_position[11] ; motorCtrlSimple:mr01|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr03|cur_position[11] ; motorCtrlSimple:mr03|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr03|cur_position[10] ; motorCtrlSimple:mr03|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr04|cur_position[1]  ; motorCtrlSimple:mr04|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr02|cur_position[1]  ; motorCtrlSimple:mr02|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr01|cur_position[1]  ; motorCtrlSimple:mr01|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.822 ; motorCtrlSimple:mr00|cur_position[1]  ; motorCtrlSimple:mr00|cur_position[1]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.896      ;
-; 2.823 ; motorCtrlSimple:mr05|clockCounter[5]  ; motorCtrlSimple:mr05|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr02|clockCounter[5]  ; motorCtrlSimple:mr02|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr00|clockCounter[5]  ; motorCtrlSimple:mr00|clockCounter[5]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr04|cur_position[12] ; motorCtrlSimple:mr04|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr05|cur_position[12] ; motorCtrlSimple:mr05|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr02|cur_position[12] ; motorCtrlSimple:mr02|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr01|cur_position[12] ; motorCtrlSimple:mr01|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr03|cur_position[12] ; motorCtrlSimple:mr03|cur_position[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr00|cur_position[11] ; motorCtrlSimple:mr00|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
-; 2.823 ; motorCtrlSimple:mr04|cur_position[9]  ; motorCtrlSimple:mr04|cur_position[9]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 2.897      ;
+; 1.118 ; SSP:ssp|recvdData[5]                  ; SSP:ssp|recvdData[6]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.297      ;
+; 1.126 ; SSP:ssp|MOSIr[0]                      ; SSP:ssp|MOSIr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.305      ;
+; 1.134 ; SSP:ssp|SCKr[0]                       ; SSP:ssp|SCKr[1]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.313      ;
+; 1.137 ; divider[5][0]                         ; motorCtrlSimple:mr05|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.316      ;
+; 1.139 ; SSP:ssp|SSELr[0]                      ; SSP:ssp|SSELr[1]                      ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.318      ;
+; 1.139 ; SSP:ssp|recvdData[6]                  ; SSP:ssp|recvdData[7]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.318      ;
+; 1.140 ; SSP:ssp|recvdData[8]                  ; SSP:ssp|recvdData[9]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.319      ;
+; 1.140 ; divider[6][12]                        ; motorCtrlSimple:mr06|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.319      ;
+; 1.140 ; divider[4][12]                        ; motorCtrlSimple:mr04|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.319      ;
+; 1.140 ; divider[3][12]                        ; motorCtrlSimple:mr03|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.319      ;
+; 1.141 ; SSP:ssp|recvdData[8]                  ; divider[6][8]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.320      ;
+; 1.141 ; SSP:ssp|recvdData[11]                 ; divider[6][11]                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.320      ;
+; 1.143 ; SSP:ssp|recvdData[1]                  ; divider[7][1]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.322      ;
+; 1.148 ; SSP:ssp|recvdData[11]                 ; SSP:ssp|recvdData[12]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.327      ;
+; 1.149 ; SSP:ssp|recvdData[1]                  ; SSP:ssp|recvdData[2]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.328      ;
+; 1.151 ; counter[24]                           ; USER_LED0~reg0                        ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.330      ;
+; 1.152 ; SSP:ssp|SCK_risingedgeDeb             ; newWordRecvdR                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.331      ;
+; 1.155 ; SSP:ssp|SCKr[1]                       ; SSP:ssp|SCKr[2]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.334      ;
+; 1.183 ; motorCtrlSimple:mr04|step             ; motorCtrlSimple:mr04|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.362      ;
+; 1.183 ; motorCtrlSimple:mr03|step             ; motorCtrlSimple:mr03|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.362      ;
+; 1.212 ; SSP:ssp|recvdData[14]                 ; SSP:ssp|recvdData[15]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.391      ;
+; 1.335 ; SSP:ssp|recvdData[4]                  ; SSP:ssp|recvdData[5]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.514      ;
+; 1.337 ; SSP:ssp|recvdData[10]                 ; SSP:ssp|recvdData[11]                 ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.516      ;
+; 1.338 ; SSP:ssp|SSELr[2]                      ; SSP:ssp|wordDataSendLoc[0]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.517      ;
+; 1.340 ; motorCtrlSimple:mr06|cur_position[19] ; motorCtrlSimple:mr06|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.519      ;
+; 1.341 ; SSP:ssp|wordDataSendLoc[4]            ; SSP:ssp|wordDataSendLoc[5]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.520      ;
+; 1.342 ; SSP:ssp|wordDataSendLoc[1]            ; SSP:ssp|wordDataSendLoc[2]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.521      ;
+; 1.343 ; SSP:ssp|recvdData[2]                  ; SSP:ssp|recvdData[3]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.522      ;
+; 1.343 ; SSP:ssp|recvdData[3]                  ; SSP:ssp|recvdData[4]                  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.522      ;
+; 1.347 ; motorCtrlSimple:mr00|dir              ; motorCtrlSimple:mr00|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.526      ;
+; 1.348 ; motorCtrlSimple:mr07|cur_position[19] ; motorCtrlSimple:mr07|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.527      ;
+; 1.348 ; motorCtrlSimple:mr02|cur_position[19] ; motorCtrlSimple:mr02|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.527      ;
+; 1.354 ; SSP:ssp|wordDataSendLoc[13]           ; SSP:ssp|wordDataSendLoc[14]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.533      ;
+; 1.355 ; counter[0]                            ; counter[0]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.534      ;
+; 1.417 ; SSP:ssp|bitcnt[2]                     ; SSP:ssp|bitcnt[3]                     ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.596      ;
+; 1.436 ; divider[4][11]                        ; motorCtrlSimple:mr04|clockCounter[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.615      ;
+; 1.440 ; divider[1][3]                         ; motorCtrlSimple:mr01|clockCounter[3]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.619      ;
+; 1.446 ; SSP:ssp|recvdData[6]                  ; divider[7][6]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.625      ;
+; 1.453 ; divider[1][4]                         ; motorCtrlSimple:mr01|clockCounter[4]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.632      ;
+; 1.457 ; divider[4][7]                         ; motorCtrlSimple:mr04|clockCounter[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.636      ;
+; 1.463 ; divider[1][2]                         ; motorCtrlSimple:mr01|clockCounter[2]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.642      ;
+; 1.464 ; divider[4][0]                         ; motorCtrlSimple:mr04|clockCounter[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.643      ;
+; 1.466 ; motorCtrlSimple:mr08|step             ; motorCtrlSimple:mr08|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.645      ;
+; 1.487 ; motorCtrlSimple:mr01|step             ; motorCtrlSimple:mr01|stepR            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.666      ;
+; 1.541 ; moveDir[2]                            ; moveDir[2]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.720      ;
+; 1.542 ; moveDir[4]                            ; moveDir[4]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.721      ;
+; 1.550 ; motorCtrlSimple:mr05|step             ; motorCtrlSimple:mr05|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.729      ;
+; 1.552 ; SSP:ssp|wordDataSendLoc[7]            ; SSP:ssp|wordDataSendLoc[8]            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.731      ;
+; 1.555 ; SSP:ssp|wordDataSendLoc[14]           ; SSP:ssp|wordDataSendLoc[15]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.734      ;
+; 1.556 ; SSP:ssp|wordDataSendLoc[10]           ; SSP:ssp|wordDataSendLoc[11]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.735      ;
+; 1.557 ; motorCtrlSimple:mr02|dir              ; motorCtrlSimple:mr02|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.736      ;
+; 1.557 ; posReset[0]                           ; posReset[0]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.736      ;
+; 1.557 ; SSP:ssp|wordDataSendLoc[9]            ; SSP:ssp|wordDataSendLoc[10]           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.736      ;
+; 1.558 ; motorCtrlSimple:mr08|dir              ; motorCtrlSimple:mr08|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.737      ;
+; 1.572 ; posReset[2]                           ; posReset[2]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.751      ;
+; 1.576 ; stepClockEna[1]                       ; motorCtrlSimple:mr01|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.755      ;
+; 1.602 ; motorCtrlSimple:mr04|step             ; motorCtrlSimple:mr04|step             ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.781      ;
+; 1.663 ; motorCtrlSimple:mr04|clockCounter[12] ; motorCtrlSimple:mr04|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.842      ;
+; 1.663 ; motorCtrlSimple:mr03|clockCounter[12] ; motorCtrlSimple:mr03|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.842      ;
+; 1.676 ; motorCtrlSimple:mr08|clockCounter[12] ; motorCtrlSimple:mr08|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.855      ;
+; 1.681 ; motorCtrlSimple:mr09|clockCounter[12] ; motorCtrlSimple:mr09|clockCounter[12] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.860      ;
+; 1.691 ; SSP:ssp|recvdData[5]                  ; divider[7][5]                         ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.870      ;
+; 1.712 ; motorCtrlSimple:mr04|dir              ; motorCtrlSimple:mr04|dir              ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; moveDir[9]                            ; moveDir[9]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; stepClockEna[7]                       ; stepClockEna[7]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; counter[18]                           ; counter[18]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; motorCtrlSimple:mr06|cur_position[10] ; motorCtrlSimple:mr06|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; motorCtrlSimple:mr08|cur_position[10] ; motorCtrlSimple:mr08|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; motorCtrlSimple:mr01|cur_position[10] ; motorCtrlSimple:mr01|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; motorCtrlSimple:mr09|cur_position[10] ; motorCtrlSimple:mr09|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.712 ; motorCtrlSimple:mr03|cur_position[19] ; motorCtrlSimple:mr03|cur_position[19] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.891      ;
+; 1.719 ; stepClockEna[0]                       ; stepClockEna[0]                       ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr06|cur_position[11] ; motorCtrlSimple:mr06|cur_position[11] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr04|cur_position[10] ; motorCtrlSimple:mr04|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr02|cur_position[10] ; motorCtrlSimple:mr02|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr00|cur_position[10] ; motorCtrlSimple:mr00|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; counter[8]                            ; counter[8]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr06|cur_position[0]  ; motorCtrlSimple:mr06|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr05|cur_position[0]  ; motorCtrlSimple:mr05|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr04|cur_position[0]  ; motorCtrlSimple:mr04|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr08|cur_position[0]  ; motorCtrlSimple:mr08|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr02|cur_position[0]  ; motorCtrlSimple:mr02|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr00|cur_position[0]  ; motorCtrlSimple:mr00|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr03|cur_position[0]  ; motorCtrlSimple:mr03|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.719 ; motorCtrlSimple:mr09|cur_position[0]  ; motorCtrlSimple:mr09|cur_position[0]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.898      ;
+; 1.720 ; moveDir[6]                            ; moveDir[6]                            ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; counter[20]                           ; counter[20]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; counter[19]                           ; counter[19]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr07|cur_position[10] ; motorCtrlSimple:mr07|cur_position[10] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; counter[15]                           ; counter[15]                           ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr06|cur_position[7]  ; motorCtrlSimple:mr06|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr05|cur_position[7]  ; motorCtrlSimple:mr05|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr04|cur_position[7]  ; motorCtrlSimple:mr04|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr08|cur_position[7]  ; motorCtrlSimple:mr08|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr02|cur_position[7]  ; motorCtrlSimple:mr02|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr00|cur_position[7]  ; motorCtrlSimple:mr00|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr03|cur_position[7]  ; motorCtrlSimple:mr03|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr09|cur_position[7]  ; motorCtrlSimple:mr09|cur_position[7]  ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr04|cur_position[17] ; motorCtrlSimple:mr04|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
+; 1.720 ; motorCtrlSimple:mr02|cur_position[17] ; motorCtrlSimple:mr02|cur_position[17] ; CLK_SE_AR    ; CLK_SE_AR   ; 0.000        ; 0.000      ; 1.899      ;
 +-------+---------------------------------------+---------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -362,105 +362,105 @@ No paths to report.
 ; Slack  ; Actual Width ; Required Width ; Type             ; Clock     ; Clock Edge ; Target                      ;
 +--------+--------------+----------------+------------------+-----------+------------+-----------------------------+
 ; -2.289 ; 1.000        ; 3.289          ; Port Rate        ; CLK_SE_AR ; Rise       ; CLK_SE_AR                   ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[0]            ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[0]            ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[1]            ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[1]            ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCK_risingedgeDeb   ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCK_risingedgeDeb   ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[0]             ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[0]             ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[1]             ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[1]             ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[2]             ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[2]             ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[0]            ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[0]            ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[1]            ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[1]            ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[2]            ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[2]            ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[0]           ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[0]           ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[1]           ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[1]           ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[2]           ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[2]           ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[3]           ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[3]           ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[0]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[0]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[10]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[10]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[11]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[11]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[12]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[12]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[13]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[13]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[14]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[14]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[15]       ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[15]       ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[1]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[1]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[2]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[2]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[3]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[3]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[4]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[4]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[5]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[5]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[6]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[6]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[7]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[7]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[8]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[8]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[9]        ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[9]        ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[0]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[0]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[10] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[10] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[11] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[11] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[12] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[12] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[13] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[13] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[14] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[14] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[15] ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[15] ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[1]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[1]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[2]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[2]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[3]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[3]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[4]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[4]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[5]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[5]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[6]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[6]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[7]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[7]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[8]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[8]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[9]  ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[9]  ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; USER_LED0~reg0              ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; USER_LED0~reg0              ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; USER_LED1~reg0              ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; USER_LED1~reg0              ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; dataToTransfer[0]           ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; dataToTransfer[0]           ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; dataToTransfer[10]          ;
-; 0.247  ; 0.500        ; 0.253          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; dataToTransfer[10]          ;
-; 0.247  ; 0.500        ; 0.253          ; High Pulse Width ; CLK_SE_AR ; Rise       ; dataToTransfer[11]          ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[0]            ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[0]            ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[1]            ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|MOSIr[1]            ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCK_risingedgeDeb   ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCK_risingedgeDeb   ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[0]             ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[0]             ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[1]             ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[1]             ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[2]             ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SCKr[2]             ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[0]            ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[0]            ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[1]            ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[1]            ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[2]            ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|SSELr[2]            ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[0]           ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[0]           ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[1]           ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[1]           ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[2]           ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[2]           ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[3]           ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|bitcnt[3]           ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[0]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[0]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[10]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[10]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[11]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[11]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[12]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[12]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[13]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[13]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[14]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[14]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[15]       ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[15]       ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[1]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[1]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[2]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[2]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[3]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[3]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[4]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[4]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[5]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[5]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[6]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[6]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[7]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[7]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[8]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[8]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[9]        ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|recvdData[9]        ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[0]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[0]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[10] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[10] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[11] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[11] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[12] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[12] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[13] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[13] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[14] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[14] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[15] ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[15] ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[1]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[1]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[2]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[2]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[3]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[3]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[4]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[4]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[5]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[5]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[6]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[6]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[7]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[7]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[8]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[8]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[9]  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; SSP:ssp|wordDataSendLoc[9]  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; USER_LED0~reg0              ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; USER_LED0~reg0              ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; USER_LED1~reg0              ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; USER_LED1~reg0              ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; counter[0]                  ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; counter[0]                  ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; counter[10]                 ;
+; 0.284  ; 0.500        ; 0.216          ; Low Pulse Width  ; CLK_SE_AR ; Rise       ; counter[10]                 ;
+; 0.284  ; 0.500        ; 0.216          ; High Pulse Width ; CLK_SE_AR ; Rise       ; counter[11]                 ;
 +--------+--------------+----------------+------------------+-----------+------------+-----------------------------+
 
 
@@ -469,10 +469,10 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; AGPIO_1_SCK  ; CLK_SE_AR  ; 3.586 ; 3.586 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_2_MOSI ; CLK_SE_AR  ; 2.917 ; 2.917 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_4_SSEL ; CLK_SE_AR  ; 2.370 ; 2.370 ; Rise       ; CLK_SE_AR       ;
-; USER_PB0     ; CLK_SE_AR  ; 5.079 ; 5.079 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_1_SCK  ; CLK_SE_AR  ; 1.635 ; 1.635 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_2_MOSI ; CLK_SE_AR  ; 1.457 ; 1.457 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_4_SSEL ; CLK_SE_AR  ; 1.630 ; 1.630 ; Rise       ; CLK_SE_AR       ;
+; USER_PB0     ; CLK_SE_AR  ; 0.965 ; 0.965 ; Rise       ; CLK_SE_AR       ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -481,63 +481,79 @@ No paths to report.
 +--------------+------------+--------+--------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +--------------+------------+--------+--------+------------+-----------------+
-; AGPIO_1_SCK  ; CLK_SE_AR  ; -3.252 ; -3.252 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_2_MOSI ; CLK_SE_AR  ; -2.583 ; -2.583 ; Rise       ; CLK_SE_AR       ;
-; AGPIO_4_SSEL ; CLK_SE_AR  ; -2.031 ; -2.031 ; Rise       ; CLK_SE_AR       ;
-; USER_PB0     ; CLK_SE_AR  ; -4.745 ; -4.745 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_1_SCK  ; CLK_SE_AR  ; -1.185 ; -1.185 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_2_MOSI ; CLK_SE_AR  ; -1.007 ; -1.007 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_4_SSEL ; CLK_SE_AR  ; -1.180 ; -1.180 ; Rise       ; CLK_SE_AR       ;
+; USER_PB0     ; CLK_SE_AR  ; -0.515 ; -0.515 ; Rise       ; CLK_SE_AR       ;
 +--------------+------------+--------+--------+------------+-----------------+
 
 
-+----------------------------------------------------------------------------+
-; Clock to Output Times                                                      ;
-+--------------+------------+--------+--------+------------+-----------------+
-; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
-+--------------+------------+--------+--------+------------+-----------------+
-; AGPIO[*]     ; CLK_SE_AR  ; 10.602 ; 10.602 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[5]    ; CLK_SE_AR  ; 10.602 ; 10.602 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[7]    ; CLK_SE_AR  ; 9.967  ; 9.967  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[21]   ; CLK_SE_AR  ; 9.053  ; 9.053  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[22]   ; CLK_SE_AR  ; 9.863  ; 9.863  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[23]   ; CLK_SE_AR  ; 8.056  ; 8.056  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[24]   ; CLK_SE_AR  ; 8.784  ; 8.784  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[25]   ; CLK_SE_AR  ; 9.074  ; 9.074  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[26]   ; CLK_SE_AR  ; 8.722  ; 8.722  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[27]   ; CLK_SE_AR  ; 9.192  ; 9.192  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[28]   ; CLK_SE_AR  ; 9.929  ; 9.929  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[29]   ; CLK_SE_AR  ; 10.325 ; 10.325 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[30]   ; CLK_SE_AR  ; 9.607  ; 9.607  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[35]   ; CLK_SE_AR  ; 9.515  ; 9.515  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[36]   ; CLK_SE_AR  ; 8.850  ; 8.850  ; Rise       ; CLK_SE_AR       ;
-; AGPIO_3_MISO ; CLK_SE_AR  ; 10.464 ; 10.464 ; Rise       ; CLK_SE_AR       ;
-; USER_LED0    ; CLK_SE_AR  ; 7.962  ; 7.962  ; Rise       ; CLK_SE_AR       ;
-; USER_LED1    ; CLK_SE_AR  ; 10.772 ; 10.772 ; Rise       ; CLK_SE_AR       ;
-+--------------+------------+--------+--------+------------+-----------------+
++--------------------------------------------------------------------------+
+; Clock to Output Times                                                    ;
++--------------+------------+-------+-------+------------+-----------------+
+; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++--------------+------------+-------+-------+------------+-----------------+
+; AGPIO[*]     ; CLK_SE_AR  ; 7.996 ; 7.996 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[5]    ; CLK_SE_AR  ; 6.877 ; 6.877 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[7]    ; CLK_SE_AR  ; 6.877 ; 6.877 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[13]   ; CLK_SE_AR  ; 6.722 ; 6.722 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[14]   ; CLK_SE_AR  ; 7.856 ; 7.856 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[15]   ; CLK_SE_AR  ; 6.709 ; 6.709 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[16]   ; CLK_SE_AR  ; 6.786 ; 6.786 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[17]   ; CLK_SE_AR  ; 6.947 ; 6.947 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[18]   ; CLK_SE_AR  ; 7.432 ; 7.432 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[19]   ; CLK_SE_AR  ; 5.817 ; 5.817 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[20]   ; CLK_SE_AR  ; 6.942 ; 6.942 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[21]   ; CLK_SE_AR  ; 6.945 ; 6.945 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[22]   ; CLK_SE_AR  ; 7.996 ; 7.996 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[23]   ; CLK_SE_AR  ; 6.978 ; 6.978 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[24]   ; CLK_SE_AR  ; 6.836 ; 6.836 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[25]   ; CLK_SE_AR  ; 5.828 ; 5.828 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[26]   ; CLK_SE_AR  ; 6.860 ; 6.860 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[27]   ; CLK_SE_AR  ; 6.768 ; 6.768 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[28]   ; CLK_SE_AR  ; 7.369 ; 7.369 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[29]   ; CLK_SE_AR  ; 5.822 ; 5.822 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[30]   ; CLK_SE_AR  ; 6.797 ; 6.797 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[35]   ; CLK_SE_AR  ; 6.887 ; 6.887 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[36]   ; CLK_SE_AR  ; 6.781 ; 6.781 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_3_MISO ; CLK_SE_AR  ; 6.918 ; 6.918 ; Rise       ; CLK_SE_AR       ;
+; USER_LED0    ; CLK_SE_AR  ; 6.729 ; 6.729 ; Rise       ; CLK_SE_AR       ;
+; USER_LED1    ; CLK_SE_AR  ; 5.818 ; 5.818 ; Rise       ; CLK_SE_AR       ;
++--------------+------------+-------+-------+------------+-----------------+
 
 
-+----------------------------------------------------------------------------+
-; Minimum Clock to Output Times                                              ;
-+--------------+------------+--------+--------+------------+-----------------+
-; Data Port    ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
-+--------------+------------+--------+--------+------------+-----------------+
-; AGPIO[*]     ; CLK_SE_AR  ; 8.056  ; 8.056  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[5]    ; CLK_SE_AR  ; 10.602 ; 10.602 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[7]    ; CLK_SE_AR  ; 9.967  ; 9.967  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[21]   ; CLK_SE_AR  ; 9.053  ; 9.053  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[22]   ; CLK_SE_AR  ; 9.863  ; 9.863  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[23]   ; CLK_SE_AR  ; 8.056  ; 8.056  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[24]   ; CLK_SE_AR  ; 8.784  ; 8.784  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[25]   ; CLK_SE_AR  ; 9.074  ; 9.074  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[26]   ; CLK_SE_AR  ; 8.722  ; 8.722  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[27]   ; CLK_SE_AR  ; 9.192  ; 9.192  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[28]   ; CLK_SE_AR  ; 9.929  ; 9.929  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[29]   ; CLK_SE_AR  ; 10.325 ; 10.325 ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[30]   ; CLK_SE_AR  ; 9.607  ; 9.607  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[35]   ; CLK_SE_AR  ; 9.515  ; 9.515  ; Rise       ; CLK_SE_AR       ;
-;  AGPIO[36]   ; CLK_SE_AR  ; 8.850  ; 8.850  ; Rise       ; CLK_SE_AR       ;
-; AGPIO_3_MISO ; CLK_SE_AR  ; 10.464 ; 10.464 ; Rise       ; CLK_SE_AR       ;
-; USER_LED0    ; CLK_SE_AR  ; 7.962  ; 7.962  ; Rise       ; CLK_SE_AR       ;
-; USER_LED1    ; CLK_SE_AR  ; 10.772 ; 10.772 ; Rise       ; CLK_SE_AR       ;
-+--------------+------------+--------+--------+------------+-----------------+
++--------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                            ;
++--------------+------------+-------+-------+------------+-----------------+
+; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++--------------+------------+-------+-------+------------+-----------------+
+; AGPIO[*]     ; CLK_SE_AR  ; 5.817 ; 5.817 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[5]    ; CLK_SE_AR  ; 6.877 ; 6.877 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[7]    ; CLK_SE_AR  ; 6.877 ; 6.877 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[13]   ; CLK_SE_AR  ; 6.722 ; 6.722 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[14]   ; CLK_SE_AR  ; 7.856 ; 7.856 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[15]   ; CLK_SE_AR  ; 6.709 ; 6.709 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[16]   ; CLK_SE_AR  ; 6.786 ; 6.786 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[17]   ; CLK_SE_AR  ; 6.947 ; 6.947 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[18]   ; CLK_SE_AR  ; 7.432 ; 7.432 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[19]   ; CLK_SE_AR  ; 5.817 ; 5.817 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[20]   ; CLK_SE_AR  ; 6.942 ; 6.942 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[21]   ; CLK_SE_AR  ; 6.945 ; 6.945 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[22]   ; CLK_SE_AR  ; 7.996 ; 7.996 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[23]   ; CLK_SE_AR  ; 6.978 ; 6.978 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[24]   ; CLK_SE_AR  ; 6.836 ; 6.836 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[25]   ; CLK_SE_AR  ; 5.828 ; 5.828 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[26]   ; CLK_SE_AR  ; 6.860 ; 6.860 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[27]   ; CLK_SE_AR  ; 6.768 ; 6.768 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[28]   ; CLK_SE_AR  ; 7.369 ; 7.369 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[29]   ; CLK_SE_AR  ; 5.822 ; 5.822 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[30]   ; CLK_SE_AR  ; 6.797 ; 6.797 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[35]   ; CLK_SE_AR  ; 6.887 ; 6.887 ; Rise       ; CLK_SE_AR       ;
+;  AGPIO[36]   ; CLK_SE_AR  ; 6.781 ; 6.781 ; Rise       ; CLK_SE_AR       ;
+; AGPIO_3_MISO ; CLK_SE_AR  ; 6.918 ; 6.918 ; Rise       ; CLK_SE_AR       ;
+; USER_LED0    ; CLK_SE_AR  ; 6.729 ; 6.729 ; Rise       ; CLK_SE_AR       ;
+; USER_LED1    ; CLK_SE_AR  ; 5.818 ; 5.818 ; Rise       ; CLK_SE_AR       ;
++--------------+------------+-------+-------+------------+-----------------+
 
 
 +--------------------------------------------------------------------+
@@ -545,7 +561,7 @@ No paths to report.
 +------------+-----------+----------+----------+----------+----------+
 ; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+-----------+----------+----------+----------+----------+
-; CLK_SE_AR  ; CLK_SE_AR ; 9041     ; 0        ; 0        ; 0        ;
+; CLK_SE_AR  ; CLK_SE_AR ; 15133    ; 0        ; 0        ; 0        ;
 +------------+-----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -555,7 +571,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+-----------+----------+----------+----------+----------+
 ; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+-----------+----------+----------+----------+----------+
-; CLK_SE_AR  ; CLK_SE_AR ; 9041     ; 0        ; 0        ; 0        ;
+; CLK_SE_AR  ; CLK_SE_AR ; 15133    ; 0        ; 0        ; 0        ;
 +------------+-----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -580,9 +596,9 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 4     ; 4    ;
-; Unconstrained Input Port Paths  ; 5     ; 5    ;
-; Unconstrained Output Ports      ; 17    ; 17   ;
-; Unconstrained Output Port Paths ; 17    ; 17   ;
+; Unconstrained Input Port Paths  ; 4     ; 4    ;
+; Unconstrained Output Ports      ; 25    ; 25   ;
+; Unconstrained Output Port Paths ; 25    ; 25   ;
 +---------------------------------+-------+------+
 
 
@@ -592,7 +608,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sat May 20 06:27:05 2017
+    Info: Processing started: Thu Jun 29 03:40:57 2017
 Info: Command: quartus_sta golden_top -c golden_top
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -606,14 +622,14 @@ Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name CLK_SE_AR CLK_SE_AR
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -10.337
+Info (332146): Worst-case setup slack is -6.722
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):   -10.337     -2833.108 CLK_SE_AR 
-Info (332146): Worst-case hold slack is 1.734
+    Info (332119):    -6.722     -2985.106 CLK_SE_AR 
+Info (332146): Worst-case hold slack is 1.118
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):     1.734         0.000 CLK_SE_AR 
+    Info (332119):     1.118         0.000 CLK_SE_AR 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
@@ -625,8 +641,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 460 megabytes
-    Info: Processing ended: Sat May 20 06:27:10 2017
-    Info: Elapsed time: 00:00:05
+    Info: Processing ended: Thu Jun 29 03:41:00 2017
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 
 

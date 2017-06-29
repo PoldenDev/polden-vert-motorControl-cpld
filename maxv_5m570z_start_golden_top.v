@@ -54,7 +54,12 @@ input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO
 //wire uartRxDataReady;
 //wire [7:0] uartRxData;
 
-//reg [17:0] counter = 0; always @(posedge CLK_SE_AR) counter <= counter + 1;
+
+reg [32:0] counter = 0; 
+always @(posedge CLK_SE_AR) begin
+	USER_LED0 <= counter[24];
+	counter <= counter + 1;
+end
 //wire clock_4ms = (counter== 12'hfff);
 
 //wire clock_1_5mks = (counter[3:0]== 4'hf);
@@ -71,7 +76,6 @@ input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO
 //																				 .RxD_data_ready(uartRxDataReady), 
 //																				 .RxD_data(uartRxData));
 																					
- 
 //reg [23:0] newPos;
 //reg [3:0] posNum;
 //reg [11:0] newPosSignal ;
@@ -133,11 +137,11 @@ motorCtrlSimple mr02(.CLK(CLK_SE_AR), .reset(posReset[2]), .divider(divider[2]),
 motorCtrlSimple mr03(.CLK(CLK_SE_AR), .reset(posReset[3]), .divider(divider[3]), .moveDir(moveDir[3]), .stepClockEna(stepClockEna[3]), .dir(AGPIO[25]), .step(AGPIO[26]), .cur_position(curPositionW[3]));
 motorCtrlSimple mr04(.CLK(CLK_SE_AR), .reset(posReset[4]), .divider(divider[4]), .moveDir(moveDir[4]), .stepClockEna(stepClockEna[4]), .dir(AGPIO[23]), .step(AGPIO[24]), .cur_position(curPositionW[4]));
 motorCtrlSimple mr05(.CLK(CLK_SE_AR), .reset(posReset[5]), .divider(divider[5]), .moveDir(moveDir[5]), .stepClockEna(stepClockEna[5]), .dir(AGPIO[21]), .step(AGPIO[22]), .cur_position(curPositionW[5]));
-//motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
-//motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(USER_PB0), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPosition[7]));
-//motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(USER_PB0), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPosition[8]));
-//motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(USER_PB0), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPosition[9]));
-//motorCtrlSimple mr10(.CLK_50MHZ(CLK_SE_AR), .reset(USER_PB0), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
+motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
+motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(posReset[7]), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPositionW[7]));
+motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPositionW[8]));
+motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
+//motorCtrlSimple mr10(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
 
 wire [15:0] SSPrecvdData;
 wire [3:0] motorNumW = SSPrecvdData[3:0];
@@ -243,7 +247,7 @@ always @(posedge CLK_SE_AR) begin
 	//end
 	
 	USER_LED1 <= USER_PB0; 			
-	USER_LED0 <= AGPIO_4_SSEL;
+	//USER_LED0 <= AGPIO_4_SSEL;
 	//USER_LED1 <= moveDir[0];
 
 //	case(state) 
