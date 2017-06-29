@@ -3,7 +3,7 @@
  golden top project
  */
  
- module maxv_5m570z_start_golden_top(
+ module vert_cpld(
  
 input   CLK_SE_AR,
 
@@ -146,11 +146,14 @@ motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]),
 //motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
 //motorCtrlSimple mr10(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
 
-wire fifoRdReq, fifoWrReq;
+reg fifoRdReq=0, fifoWrReq=0;
 wire [31:0] fifoDataOut;
-cmdFifo fifo1(.clock(CLK_SE_AR), .data(fifoDataOut), .rdreq(fifoRdReq), .wrreq(fifoWrReq), .q(fifoDataOut));
+cmdFifo fifo1(.clock(CLK_SE_AR), .data(uartCmdRecvData), .rdreq(fifoRdReq), .wrreq(fifoWrReq), .q(fifoDataOut));
 motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(fifoDataOut[12:0]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
 
+always @(posedge CLK_SE_AR) begin
+	
+end
 
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
 wire uartBusy;
@@ -167,13 +170,29 @@ async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
 																					.TxD_busy(uartBusy));
 wire uartRxDataReady;
 wire [7:0] uartRxData;
-//reg uartRxDataL; always @(posedge CLK_SE_AR) uartRxDataL <= uartRxDataReady;
+reg uartRxDataReadyL; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
+wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
 async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
-																					//.BitTick(uartTick1),
+													ye 								//.BitTick(uartTick1),
 																					.RxD(BGPIO_UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
 																					.RxD_data(uartRxData));
-																					
+	
+
+reg [3:0] uartRecvState = 0;	
+reg [31:0] uartCmdRecvData;
+always @(posedge CLK_SE_AR) begin
+	if(uartRxDataReadyPE) begin
+		if(uartRecvState < 3) begin 
+			uartRecvState <= uartRecvState +1;
+			fifoWrReq <= 1'b0;
+		end else if(uartRecvState == 3) begin
+			uartRecvState <= 0;
+			fifoWrReq <= 1'b1;
+		end		
+		uartCmdRecvData[31:0] <= {uartRxData[7:0], uartCmdRecvData[31:8]};		
+	end	
+end	
 
 wire [15:0] SSPrecvdData;
 wire [3:0] motorNumW = SSPrecvdData[3:0];
