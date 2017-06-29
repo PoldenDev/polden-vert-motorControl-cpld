@@ -41,7 +41,10 @@ input   [  7: 0] 	MAX_SPK,
 input I2C_PROM_SCL, I2C_PROM_SDA, 
  
 // SPI EEPROM
-input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO
+input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO,
+
+input 	UART_RX,
+output 	UART_TX
  );  
 
  
@@ -140,8 +143,37 @@ motorCtrlSimple mr05(.CLK(CLK_SE_AR), .reset(posReset[5]), .divider(divider[5]),
 motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
 motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(posReset[7]), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPositionW[7]));
 motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPositionW[8]));
-motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
+//motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
 //motorCtrlSimple mr10(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
+
+wire fifoRdReq, fifoWrReq;
+wire [31:0] fifoDataOut;
+cmdFifo fifo1(.clock(CLK_SE_AR), .data(fifoDataOut), .rdreq(fifoRdReq), .wrreq(fifoWrReq), .q(fifoDataOut));
+motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(fifoDataOut[12:0]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
+
+
+reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
+wire uartBusy;
+//reg [15:0] uartBusyR; always @(posedge CLK_SE_AR) uartBusyR[7:0] <= {uartBusyR[14:0], uartBusy};
+reg uartEna = 0;
+reg uartStartSignal = 0;
+wire uartStartSignalWire = uartStartSignal && uartEna;
+wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
+async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
+																					//.BitTick(uartTick1),
+																					.TxD(BGPIO_UART_TX), 
+																					.TxD_start(uartStartSignal), 
+																					.TxD_data(uartDataReg),
+																					.TxD_busy(uartBusy));
+wire uartRxDataReady;
+wire [7:0] uartRxData;
+//reg uartRxDataL; always @(posedge CLK_SE_AR) uartRxDataL <= uartRxDataReady;
+async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
+																					//.BitTick(uartTick1),
+																					.RxD(BGPIO_UART_RX), 
+																					.RxD_data_ready(uartRxDataReady), 
+																					.RxD_data(uartRxData));
+																					
 
 wire [15:0] SSPrecvdData;
 wire [3:0] motorNumW = SSPrecvdData[3:0];
