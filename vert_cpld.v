@@ -57,6 +57,7 @@ output 	UART_TX
 //wire uartRxDataReady;
 //wire [7:0] uartRxData;
 
+assign UART_TX = UART_RX;
 
 reg [32:0] counter = 0; 
 always @(posedge CLK_SE_AR) begin
@@ -151,6 +152,7 @@ wire [31:0] fifoDataOut;
 cmdFifo fifo1(.clock(CLK_SE_AR), .data(uartCmdRecvData), .rdreq(fifoRdReq), .wrreq(fifoWrReq), .q(fifoDataOut));
 motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(fifoDataOut[12:0]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
 
+
 always @(posedge CLK_SE_AR) begin
 	
 end
@@ -173,12 +175,11 @@ wire [7:0] uartRxData;
 reg uartRxDataReadyL; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
 wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
 async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
-													ye 								//.BitTick(uartTick1),
+													 								//.BitTick(uartTick1),
 																					.RxD(BGPIO_UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
 																					.RxD_data(uartRxData));
 	
-
 reg [3:0] uartRecvState = 0;	
 reg [31:0] uartCmdRecvData;
 always @(posedge CLK_SE_AR) begin
