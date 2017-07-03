@@ -9,11 +9,11 @@ input   CLK_SE_AR,
 
 // GPIO
 input USER_PB0, USER_PB1,
-input CAP_PB_1,
+//input CAP_PB_1,
 output reg USER_LED0, USER_LED1,
 
 // Connector A 
-output   [  36: 5] 	AGPIO,
+//output   [  36: 5] 	AGPIO,
 
 input		AGPIO_1_SCK,
 input		AGPIO_2_MOSI,
@@ -21,31 +21,24 @@ output 	AGPIO_3_MISO,
 input		AGPIO_4_SSEL,
 
 // Connector B
-input   [  36: 7] 	BGPIO,
-input 	BGPIO_P_1, BGPIO_N_1,
-input 	BGPIO_P_2, BGPIO_N_2,
-input 	BGPIO_P_3, BGPIO_N_3,
+//input   [  36: 7] 	BGPIO,
+//input 	BGPIO_P_1, BGPIO_N_1,
+//input 	BGPIO_P_2, BGPIO_N_2,
+//input 	BGPIO_P_3, BGPIO_N_3,
 
-// Motor 1
-input MOTOR_1_FB_A, MOTOR_1_FB_B, MOTOR_1_CTRL,
-input   [  5: 0] 	MAX_MOTOR_1, 
+// Motor 
+output [9:0] step,
+output [9:0] dir,
 
-// Motor 2
-input MOTOR_2_FB_A, MOTOR_2_FB_B, MOTOR_2_CTRL,
-input   [  5: 0] 	MAX_MOTOR_2, 
-
-// Speaker
-input   [  7: 0] 	MAX_SPK, 
-
-// I2C EEPROM
-input I2C_PROM_SCL, I2C_PROM_SDA, 
- 
 // SPI EEPROM
-input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO,
+//input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO,
 
 input 	UART_RX,
-output 	UART_TX
- );  
+output 	UART_TX,
+
+output reg DebugPin1 = 0,
+output reg DebugPin2 = 0
+);  
 
  
 //parameter uartIdle = 0; 
@@ -135,27 +128,31 @@ reg [12:0] divider[9:0];
 //reg moveDirInverse;
 reg [9:0] stepClockEna;
 reg [9:0] moveDir;
-motorCtrlSimple mr00(.CLK(CLK_SE_AR), .reset(posReset[0]), .divider(divider[0]), .moveDir(moveDir[0]), .stepClockEna(stepClockEna[0]), .dir(AGPIO[35]), .step(AGPIO[36]), .cur_position(curPositionW[0]));
-motorCtrlSimple mr01(.CLK(CLK_SE_AR), .reset(posReset[1]), .divider(divider[1]), .moveDir(moveDir[1]), .stepClockEna(stepClockEna[1]), .dir(AGPIO[29]), .step(AGPIO[30]), .cur_position(curPositionW[1]));
-motorCtrlSimple mr02(.CLK(CLK_SE_AR), .reset(posReset[2]), .divider(divider[2]), .moveDir(moveDir[2]), .stepClockEna(stepClockEna[2]), .dir(AGPIO[27]), .step(AGPIO[28]), .cur_position(curPositionW[2]));
-motorCtrlSimple mr03(.CLK(CLK_SE_AR), .reset(posReset[3]), .divider(divider[3]), .moveDir(moveDir[3]), .stepClockEna(stepClockEna[3]), .dir(AGPIO[25]), .step(AGPIO[26]), .cur_position(curPositionW[3]));
-motorCtrlSimple mr04(.CLK(CLK_SE_AR), .reset(posReset[4]), .divider(divider[4]), .moveDir(moveDir[4]), .stepClockEna(stepClockEna[4]), .dir(AGPIO[23]), .step(AGPIO[24]), .cur_position(curPositionW[4]));
-motorCtrlSimple mr05(.CLK(CLK_SE_AR), .reset(posReset[5]), .divider(divider[5]), .moveDir(moveDir[5]), .stepClockEna(stepClockEna[5]), .dir(AGPIO[21]), .step(AGPIO[22]), .cur_position(curPositionW[5]));
-motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
-motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(posReset[7]), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPositionW[7]));
-motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPositionW[8]));
+//motorCtrlSimple mr00(.CLK(CLK_SE_AR), .reset(posReset[0]), .divider(divider[0]), .moveDir(moveDir[0]), .stepClockEna(stepClockEna[0]), .dir(AGPIO[35]), .step(AGPIO[36]), .cur_position(curPositionW[0]));
+//motorCtrlSimple mr01(.CLK(CLK_SE_AR), .reset(posReset[1]), .divider(divider[1]), .moveDir(moveDir[1]), .stepClockEna(stepClockEna[1]), .dir(AGPIO[29]), .step(AGPIO[30]), .cur_position(curPositionW[1]));
+//motorCtrlSimple mr02(.CLK(CLK_SE_AR), .reset(posReset[2]), .divider(divider[2]), .moveDir(moveDir[2]), .stepClockEna(stepClockEna[2]), .dir(AGPIO[27]), .step(AGPIO[28]), .cur_position(curPositionW[2]));
+//motorCtrlSimple mr03(.CLK(CLK_SE_AR), .reset(posReset[3]), .divider(divider[3]), .moveDir(moveDir[3]), .stepClockEna(stepClockEna[3]), .dir(AGPIO[25]), .step(AGPIO[26]), .cur_position(curPositionW[3]));
+//motorCtrlSimple mr04(.CLK(CLK_SE_AR), .reset(posReset[4]), .divider(divider[4]), .moveDir(moveDir[4]), .stepClockEna(stepClockEna[4]), .dir(AGPIO[23]), .step(AGPIO[24]), .cur_position(curPositionW[4]));
+//motorCtrlSimple mr05(.CLK(CLK_SE_AR), .reset(posReset[5]), .divider(divider[5]), .moveDir(moveDir[5]), .stepClockEna(stepClockEna[5]), .dir(AGPIO[21]), .step(AGPIO[22]), .cur_position(curPositionW[5]));
+//motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
+//motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(posReset[7]), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPositionW[7]));
+//motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPositionW[8]));
 //motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
 //motorCtrlSimple mr10(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
 
-reg fifoRdReq=0, fifoWrReq=0;
-wire [31:0] fifoDataOut;
-cmdFifo fifo1(.clock(CLK_SE_AR), .data(uartCmdRecvData), .rdreq(fifoRdReq), .wrreq(fifoWrReq), .q(fifoDataOut));
-motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(fifoDataOut[12:0]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
+reg [9:0]fifoWrReq=0;
+wire [31:0] fifoDataOut[9:0];
+wire [9:0] fifoEmpty;
+wire [9:0] mrCtrlActive;
 
-
-always @(posedge CLK_SE_AR) begin
-	
+genvar i;
+generate
+for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
+cmdFifo fifo(.clock(CLK_SE_AR), .data(uartCmdRecvData[i]), .rdreq((~mrCtrlActive[i])&(~fifoEmpty[i])), .wrreq(fifoWrReq), .q(fifoDataOut[i]), .empty(fifoEmpty[i]));
+motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), .reset(posReset[i]), .divider(fifoDataOut[i][12:0]), .newPos(fifoDataOut[i][31:13]), .dir(dir[i]), .step(step[i]), .active(mrCtrlActive[i]));
 end
+endgenerate
+
 
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
 wire uartBusy;
@@ -176,23 +173,35 @@ reg uartRxDataReadyL; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxData
 wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
 async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
-																					.RxD(BGPIO_UART_RX), 
+																					.RxD(UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
 																					.RxD_data(uartRxData));
 	
 reg [3:0] uartRecvState = 0;	
-reg [31:0] uartCmdRecvData;
+reg [7:0] curMrCtrl = 0;
+reg [31:0] uartCmdRecvData[9:0];
+reg [31:0] uartCmd;
 always @(posedge CLK_SE_AR) begin
 	if(uartRxDataReadyPE) begin
-		if(uartRecvState < 3) begin 
+		if(uartRecvState == 0) begin
+			curMrCtrl <= uartRxData;
+		end
+		else if(uartRecvState < 4) begin 
 			uartRecvState <= uartRecvState +1;
-			fifoWrReq <= 1'b0;
-		end else if(uartRecvState == 3) begin
+		end else if(uartRecvState == 4) begin
 			uartRecvState <= 0;
 			fifoWrReq <= 1'b1;
+			uartCmd <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};
+			DebugPin2 <= 1'b1;
 		end		
-		uartCmdRecvData[31:0] <= {uartRxData[7:0], uartCmdRecvData[31:8]};		
+		uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};		
+		DebugPin1 <= 1'b1;
 	end	
+	else begin
+		fifoWrReq <= 0;
+		DebugPin1 <= 1'b0;
+		DebugPin2 <= 1'b0;		
+	end
 end	
 
 wire [15:0] SSPrecvdData;
@@ -206,7 +215,7 @@ wire newWordRecvd_fallingedge = ((newWordRecvdR==1'b1)&&(newWordRecvd==1'b0));
 reg  [15:0] dataToTransfer;
 reg AGPIO_4_SSELR;  always @(posedge CLK_SE_AR) AGPIO_4_SSELR <= AGPIO_4_SSEL;
 wire AGPIO_4_SSEL_fallingedge = ((AGPIO_4_SSELR==1'b1)&&(AGPIO_4_SSEL==1'b0)); 
-SSP ssp(.clk(CLK_SE_AR), .SCK(AGPIO_1_SCK), .MOSI(AGPIO_2_MOSI), .MISO(AGPIO_3_MISO), .SSEL(AGPIO_4_SSEL), .recvdData(SSPrecvdData), .word_received(newWordRecvd), .wordDataToSend(dataToTransfer), .SCK_risingedgeDeb(AGPIO[7]));
+//SSP ssp(.clk(CLK_SE_AR), .SCK(AGPIO_1_SCK), .MOSI(AGPIO_2_MOSI), .MISO(AGPIO_3_MISO), .SSEL(AGPIO_4_SSEL), .recvdData(SSPrecvdData), .word_received(newWordRecvd), .wordDataToSend(dataToTransfer), .SCK_risingedgeDeb(AGPIO[7]));
 
 parameter wait_cmd_state = 0;
 parameter sendCurrentPosition_state = 0;
@@ -215,7 +224,7 @@ parameter sendCurrentPosition_state = 0;
 reg [3:0] motorNum;
 
 reg [9:0] lowerPosSignal;
-assign AGPIO[5] = newWordRecvd;
+//assign AGPIO[5] = newWordRecvd;
 
 initial begin
 	pospos[0] = 32'h000aaaab;
