@@ -4,34 +4,14 @@
  */
  
  module vert_cpld(
+ input   CLK_SE_AR,
  
-input   CLK_SE_AR,
-
-// GPIO
-input USER_PB0, USER_PB1,
 //input CAP_PB_1,
-output reg USER_LED0, USER_LED1,
-
-// Connector A 
-//output   [  36: 5] 	AGPIO,
-
-//input		AGPIO_1_SCK,
-//input		AGPIO_2_MOSI,
-//output 	AGPIO_3_MISO,
-//input		AGPIO_4_SSEL,
-
-// Connector B
-//input   [  36: 7] 	BGPIO,
-//input 	BGPIO_P_1, BGPIO_N_1,
-//input 	BGPIO_P_2, BGPIO_N_2,
-//input 	BGPIO_P_3, BGPIO_N_3,
+output reg USER_LED0,
 
 // Motor 
 output [9:0] step,
 output [9:0] dir,
-
-// SPI EEPROM
-//input SPI_MOSI, SPI_SCK, SPI_CSN, SPI_MISO,
 
 input 	UART_RX,
 output 	UART_TX,
@@ -58,15 +38,6 @@ always @(posedge CLK_SE_AR) begin
 	USER_LED0 <= counter[24];
 	counter <= counter + 1;
 end
-//wire clock_4ms = (counter== 12'hfff);
-
-//wire clock_1_5mks = (counter[3:0]== 4'hf);
-//wire clock_6ms = (counter== 18'hffff);
-
-//wire clock_26ms = (counter== 18'h3ffff);
-
-
-//assign AGPIO[34] = clock_26ms;
 
 // async_receiver #(.ClkFrequency(10000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
 //																				 //.BitTick(uartTick1),
@@ -123,44 +94,67 @@ end
 //assign USER_LED1 = stepClockEna[1];
 //wire [31:0] curPositionW[9:0];
 //reg [31:0] pospos[9:0];
-
 //reg [12:0] divider[9:0];
-
 //reg moveDirInverse;
-
-//motorCtrlSimple mr00(.CLK(CLK_SE_AR), .reset(posReset[0]), .divider(divider[0]), .moveDir(moveDir[0]), .stepClockEna(stepClockEna[0]), .dir(AGPIO[35]), .step(AGPIO[36]), .cur_position(curPositionW[0]));
-//motorCtrlSimple mr01(.CLK(CLK_SE_AR), .reset(posReset[1]), .divider(divider[1]), .moveDir(moveDir[1]), .stepClockEna(stepClockEna[1]), .dir(AGPIO[29]), .step(AGPIO[30]), .cur_position(curPositionW[1]));
-//motorCtrlSimple mr02(.CLK(CLK_SE_AR), .reset(posReset[2]), .divider(divider[2]), .moveDir(moveDir[2]), .stepClockEna(stepClockEna[2]), .dir(AGPIO[27]), .step(AGPIO[28]), .cur_position(curPositionW[2]));
-//motorCtrlSimple mr03(.CLK(CLK_SE_AR), .reset(posReset[3]), .divider(divider[3]), .moveDir(moveDir[3]), .stepClockEna(stepClockEna[3]), .dir(AGPIO[25]), .step(AGPIO[26]), .cur_position(curPositionW[3]));
-//motorCtrlSimple mr04(.CLK(CLK_SE_AR), .reset(posReset[4]), .divider(divider[4]), .moveDir(moveDir[4]), .stepClockEna(stepClockEna[4]), .dir(AGPIO[23]), .step(AGPIO[24]), .cur_position(curPositionW[4]));
-//motorCtrlSimple mr05(.CLK(CLK_SE_AR), .reset(posReset[5]), .divider(divider[5]), .moveDir(moveDir[5]), .stepClockEna(stepClockEna[5]), .dir(AGPIO[21]), .step(AGPIO[22]), .cur_position(curPositionW[5]));
-//motorCtrlSimple mr06(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[6]), .moveDir(moveDir[6]), .stepClockEna(stepClockEna[6]), .dir(AGPIO[19]), .step(AGPIO[20]), .cur_position(curPositionW[6]));
-//motorCtrlSimple mr07(.CLK(CLK_SE_AR), .reset(posReset[7]), .divider(divider[7]), .moveDir(moveDir[7]), .stepClockEna(stepClockEna[7]), .dir(AGPIO[17]), .step(AGPIO[18]), .cur_position(curPositionW[7]));
-//motorCtrlSimple mr08(.CLK(CLK_SE_AR), .reset(posReset[8]), .divider(divider[8]), .moveDir(moveDir[8]), .stepClockEna(stepClockEna[8]), .dir(AGPIO[15]), .step(AGPIO[16]), .cur_position(curPositionW[8]));
-//motorCtrlSimple mr09(.CLK(CLK_SE_AR), .reset(posReset[9]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[13]), .step(AGPIO[14]), .cur_position(curPositionW[9]));
-//motorCtrlSimple mr10(.CLK(CLK_SE_AR), .reset(posReset[6]), .divider(divider[9]), .moveDir(moveDir[9]), .stepClockEna(stepClockEna[9]), .dir(AGPIO[11]), .step(AGPIO[12]), .cur_position(curPosition[9]));
-
 //reg [9:0] stepClockEna;
 //reg [9:0] moveDir;
 reg [9:0] posReset = 0;
-//reg [9:0]fifoWrReq=0;
+reg [9:0]fifoWrReq=0;
 //wire [31:0] fifoDataOut[9:0];
-//wire [9:0] fifoEmpty;
+wire [9:0] fifoEmpty;
+
 wire [9:0] mrCtrlActive;
+reg [9:0] mrCtrlActiveR;
+
+reg [14:0] divider[9:0];
+reg [13:0] stepCounter[9:0];
+reg dataPending[9:0];
+
 
 genvar i;
 generate
 for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
-//cmdFifo fifo(.clock(CLK_SE_AR), .data(uartCmdRecvData[i]), .rdreq((~mrCtrlActive[i])&(~fifoEmpty[i])), .wrreq(fifoWrReq), .q(fifoDataOut[i]), .empty(fifoEmpty[i]));
-//fifo_cust fifo(.clk(CLK_SE_AR), .rst(rst), .buf_in(uartCmdRecvData[i]), 
-//														 .buf_out(fifoDataOut[i]), 
-//														 .wr_en(fifoWrReq),
-//														 .rd_en((~mrCtrlActive[i])&(~fifoEmpty[i])),
-//														 .buf_empty(fifoEmpty[i]));
+
+//cmdFifo fifo(.clock(CLK_SE_AR), 
+//				.data(uartCmd), 
+//				.rdreq((~mrCtrlActive[i])&(~fifoEmpty[i])), 
+//				.wrreq(fifoWrReq[i]), 
+//				.q(fifoDataOut[i]), 
+//				.empty(fifoEmpty[i]));
+				
+//fifo_cust fifo(.clk(CLK_SE_AR), 
+//					.rst(rst), 
+//					.buf_in(uartCmd), 
+//					.buf_out(fifoDataOut[i]), 
+//					.wr_en(fifoWrReq[i]),
+//					.rd_en((~mrCtrlActive[i])&(~fifoEmpty[i])),
+//					.buf_empty(fifoEmpty[i]));
 //motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), .reset(posReset[i]), .divider(fifoDataOut[i][12:0]), .newPos(fifoDataOut[i][31:13]), .dir(dir[i]), .step(step[i]), .active(mrCtrlActive[i]));
-motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), .reset(posReset[i]), .divider(uartCmdRecvData[i][12:0]), .newPos(uartCmdRecvData[i][31:13]), .dir(dir[i]), .step(step[i]), .rdAck(mrCtrlActive[i]));
+motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
+							 .reset(posReset[i]), 
+							 .divider(divider[i][14:0]), 
+							 .stepsToGo(stepCounter[i][13:0]), 
+							 .dir(dir[i]), 
+							 .step(step[i]), 
+							 .activeMode(mrCtrlActive[i]));
+
+//always @(posedge CLK_SE_AR) begin
+//	mrCtrlActiveR[i] <= mrCtrlActive[i];
+//	if((mrCtrlActive[i]==1)&&(mrCtrlActiveR[i]==0)) begin
+//		divider[i] <= 0;
+//		stepCounter[i]<= 0;
+//	end
+//		
+//end						 
+
+							 
 end
 endgenerate
+
+//generate
+//for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
+//end
+//endgenerate
 
 
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
@@ -189,8 +183,9 @@ async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
 	
 reg [3:0] uartRecvState = 0;	
 reg [3:0] curMrCtrl = 0;
-reg [31:0] uartCmdRecvData[9:0];
+
 reg [31:0] uartCmd;
+
 always @(posedge CLK_SE_AR) begin
 	if(uartRxDataReadyPE) begin
 		if(uartRecvState == 0) begin
@@ -200,9 +195,11 @@ always @(posedge CLK_SE_AR) begin
 			uartRecvState <= uartRecvState +1;
 		end else if(uartRecvState == 4) begin
 			uartRecvState <= 0;
-			//fifoWrReq[curMrCtrl] <= 1'b1;
+			fifoWrReq[curMrCtrl] <= 1'b1;
 			//uartCmd <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};
-			uartCmdRecvData[curMrCtrl] <= uartCmd;
+			//uartCmdRecvData[curMrCtrl] <= uartCmd;
+			divider[curMrCtrl] <= uartCmd[14:0];
+			stepCounter[curMrCtrl] <= uartCmd[31:15];
 			DebugPin2 <= 1'b1;
 		end		
 		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};		
@@ -210,10 +207,16 @@ always @(posedge CLK_SE_AR) begin
 		DebugPin1 <= 1'b1;
 	end	
 	else begin	
-		//fifoWrReq <= 10'h0;
+		fifoWrReq <= 10'h0;
 		DebugPin1 <= 1'b0;
 		DebugPin2 <= 1'b0;		
 	end
+	
+	mrCtrlActiveR[0] <= mrCtrlActive[0];
+	if((mrCtrlActive[0]==1)&&(mrCtrlActiveR[0]==0)) begin
+		dataPending[0] <= 1;
+	end	
+		
 end	
 
 //wire [15:0] SSPrecvdData;
@@ -302,53 +305,6 @@ end
 //		endcase
 //		
 //	end
-//	
-//		
-////	if(AGPIO_4_SSEL_fallingedge ) begin	
-////	 if((sendAnsState== 1'b0)) begin
-////			dataToTransfer <= 16'hbbbb;
-////	 end
-////	 if((sendAnsState== 1'b1)) begin
-////			dataToTransfer <= 16'haaaa;
-////	  end
-////	end	
-//	
-//	//dataToTransfer[15:0] <= curPosition[0][18:3];//lowerPosSignal[9:0];
-//	
-//	//if(newWordRecvd_fallingedge && (SSPrecvdData[15]== 1'b1)) begin	
-//		
-//	//end
-//	
-//	USER_LED1 <= USER_PB0; 			
-//	//USER_LED0 <= AGPIO_4_SSEL;
-//	//USER_LED1 <= moveDir[0];
-//
-////	case(state) 
-////		wait_cmd_state:  begin
-////			if(newWordRecvd) begin
-////				//motorNum[SSPrecvdData[3:0]] <= SSPrecvdData[13:4];		
-////				divider[motorNum] <= SSPrecvdData[13:4];
-////				moveDir[motorNum] <=  SSPrecvdData[14];
-////				stepClockEna[motorNum] <= SSPrecvdData[15];
-////				dataToTransfer[15:0] <=  {lowerPosSignal[motorNum], curPosition[motorNum][18:4]};				
-////				state <= wait_cmd_state;				
-////			end						
-////			else 
-////				dataToTransfer[9:0] <=  lowerPosSignal[9:0];						
-////		end
-////		
-////		sendCurrentPosition_state: begin
-////			if(newWordRecvd) begin
-////				divider[motorNum] <= SSPrecvdData[9:0];
-////				dataToTransfer <= {lowerPosSignal[motorNum], curPosition[motorNum][15:0]};
-////				state <= wait_cmd_state;
-////			end
-////				
-////		end
-////		
-////	endcase
-//end
 
-
-endmodule
+endmodule
 
