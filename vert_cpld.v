@@ -89,21 +89,7 @@ endgenerate
 
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
 
-reg [7:0] sendDelay;
-wire uartBusy; reg uartBusyR; 
 
-reg uartSendState = 0;
-reg uartSendPartNum = 0;
-reg uartStartSignal = 0;
-reg [7:0] uartTxData;
-
-//wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
-async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
-																					//.BitTick(uartTick1),
-																					.TxD(UART_TX), 
-																					.TxD_start(uartStartSignal), 
-																					.TxD_data(uartTxData),
-																					.TxD_busy(uartBusy));
 wire uartRxDataReady;
 wire [7:0] uartRxData;
 reg uartRxDataReadyL; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
@@ -154,8 +140,30 @@ always @(posedge CLK_SE_AR) begin
 	if((mrCtrlActive[0]==1)&&(mrCtrlActiveR[0]==0)) begin
 		dataPending[0] <= 0;
 	end			
+	
 		
+end
 
+
+
+
+reg [7:0] sendDelay;
+wire uartBusy; reg uartBusyR; 
+
+reg uartSendState = 0;
+reg uartSendPartNum = 0;
+reg uartStartSignal = 0;
+reg [7:0] uartTxData;
+
+//wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
+async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
+																					//.BitTick(uartTick1),
+																					.TxD(UART_TX), 
+																					.TxD_start(uartStartSignal), 
+																					.TxD_data(uartTxData),
+																					.TxD_busy(uartBusy));
+																					
+always @(posedge CLK_SE_AR) begin
 	case(uartSendState)
 		0:  begin
 			if(dataPending[9:0] != 10'h3ff) begin				
@@ -163,7 +171,7 @@ always @(posedge CLK_SE_AR) begin
 				uartSendPartNum <= uartSendPartNum + 1;
 				sendDelay <= 8'hff;
 				uartStartSignal <= 1;
-				uartSendState <= 2'b01;
+				uartSendState <= 1;
 				
 			end			
 		end
@@ -171,12 +179,11 @@ always @(posedge CLK_SE_AR) begin
 			uartStartSignal <= 0;
 			sendDelay <= sendDelay - 1;
 			if(sendDelay == 0) begin
-				uartSendState <= 2'b10;
+				uartSendState <= 0;
 			end		
 		end
-	endcase
-		
-end	
+	endcase	
+end
 
 endmodule
 
