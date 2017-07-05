@@ -20,18 +20,7 @@ output reg DebugPin1 = 0,
 output reg DebugPin2 = 0
 );  
 
- 
-//parameter uartIdle = 0; 
-//parameter recvNum = 1;
-//parameter recvPos = 2;
-
-//reg [2:0] uartState = uartIdle;
-
-//wire uartRxDataReady;
-//wire [7:0] uartRxData;
 wire rst;
-
-//assign UART_TX = UART_RX;
 
 reg [32:0] counter = 0; 
 always @(posedge CLK_SE_AR) begin
@@ -39,67 +28,8 @@ always @(posedge CLK_SE_AR) begin
 	counter <= counter + 1;
 end
 
-// async_receiver #(.ClkFrequency(10000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
-//																				 //.BitTick(uartTick1),
-//																				 .RxD(BGPIO[36]), 
-//																				 .RxD_data_ready(uartRxDataReady), 
-//																				 .RxD_data(uartRxData));
-																					
-//reg [23:0] newPos;
-//reg [3:0] posNum;
-//reg [11:0] newPosSignal ;
-//reg sign = 0;
-////assign AGPIO[34] = sign;
-//always @(posedge CLK_SE_AR) begin
-//
-//		
-//		if(uartRxDataReady) begin
-//			case(uartState)
-//				uartIdle: begin				
-//					if(uartRxData == "S") begin
-//						uartState <= recvNum;	
-//						newPosSignal[0] <=1'b1;	
-//						sign <=1'b1;
-//						USER_LED0 <= 1'b0;						
-//					end
-//					else begin
-//						USER_LED0 <= 1'b1;						
-//					end	
-//					
-//				end			
-//				recvNum: begin
-//					posNum <= uartRxData;
-//					uartState <= recvPos;	
-//					newPosSignal[posNum] <=1'b0;
-//					sign <=1'b0;	
-//					uartState <= uartIdle;
-//					USER_LED0 <= 1'b1;	
-//										
-//				end
-//				recvPos: begin
-//					newPos <= uartRxData;
-//					newPosSignal[posNum] <=1'b1;
-//					uartState <= uartIdle;
-//				end
-//			
-//			endcase
-//		end
-//		else begin
-//			newPosSignal[0] <=1'b0;	
-//		end
-//
-//end
-
-//assign USER_LED0 = stepClockEna[0];
-//assign USER_LED1 = stepClockEna[1];
-//wire [31:0] curPositionW[9:0];
-//reg [31:0] pospos[9:0];
-//reg [12:0] divider[9:0];
-//reg moveDirInverse;
-//reg [9:0] stepClockEna;
-//reg [9:0] moveDir;
 reg [9:0] posReset = 0;
-reg [9:0]fifoWrReq=0;
+//reg [9:0] fifoWrReq=0;
 //wire [31:0] fifoDataOut[9:0];
 wire [9:0] fifoEmpty;
 
@@ -108,7 +38,7 @@ reg [9:0] mrCtrlActiveR;
 
 reg [14:0] divider[9:0];
 reg [13:0] stepCounter[9:0];
-reg dataPending[9:0];
+reg [9:0] dataPending = 0;
 
 
 genvar i;
@@ -158,17 +88,21 @@ endgenerate
 
 
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
-//wire uartBusy;
-////reg [15:0] uartBusyR; always @(posedge CLK_SE_AR) uartBusyR[7:0] <= {uartBusyR[14:0], uartBusy};
-reg uartEna = 0;
+
+reg [7:0] sendDelay;
+wire uartBusy; reg uartBusyR; 
+
+reg uartSendState = 0;
+reg uartSendPartNum = 0;
 reg uartStartSignal = 0;
-//wire uartStartSignalWire = uartStartSignal && uartEna;
+reg [7:0] uartTxData;
+
 //wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
 async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
 																					//.BitTick(uartTick1),
 																					.TxD(UART_TX), 
 																					.TxD_start(uartStartSignal), 
-																					.TxD_data(uartDataReg),
+																					.TxD_data(uartTxData),
 																					.TxD_busy(uartBusy));
 wire uartRxDataReady;
 wire [7:0] uartRxData;
@@ -195,11 +129,14 @@ always @(posedge CLK_SE_AR) begin
 			uartRecvState <= uartRecvState +1;
 		end else if(uartRecvState == 4) begin
 			uartRecvState <= 0;
-			fifoWrReq[curMrCtrl] <= 1'b1;
+			//fifoWrReq[curMrCtrl] <= 1'b1;
 			//uartCmd <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};
 			//uartCmdRecvData[curMrCtrl] <= uartCmd;
-			divider[curMrCtrl] <= uartCmd[14:0];
-			stepCounter[curMrCtrl] <= uartCmd[31:15];
+			if(dataPending[curMrCtrl] == 0) begin
+				divider[curMrCtrl] <= uartCmd[14:0];
+				stepCounter[curMrCtrl] <= uartCmd[31:15];		
+				dataPending[curMrCtrl] <= 1;
+			end
 			DebugPin2 <= 1'b1;
 		end		
 		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};		
@@ -207,104 +144,39 @@ always @(posedge CLK_SE_AR) begin
 		DebugPin1 <= 1'b1;
 	end	
 	else begin	
-		fifoWrReq <= 10'h0;
+		//fifoWrReq <= 10'h0;
 		DebugPin1 <= 1'b0;
 		DebugPin2 <= 1'b0;		
 	end
 	
-	mrCtrlActiveR[0] <= mrCtrlActive[0];
+	mrCtrlActiveR <= mrCtrlActive;
+	
 	if((mrCtrlActive[0]==1)&&(mrCtrlActiveR[0]==0)) begin
-		dataPending[0] <= 1;
-	end	
+		dataPending[0] <= 0;
+	end			
+		
+
+	case(uartSendState)
+		0:  begin
+			if(dataPending[9:0] != 10'h3ff) begin				
+				uartTxData[7:0] <= {uartSendPartNum, 3'h0, (uartSendPartNum==0)? dataPending[4:0]:dataPending[9:5]};
+				uartSendPartNum <= uartSendPartNum + 1;
+				sendDelay <= 8'hff;
+				uartStartSignal <= 1;
+				uartSendState <= 2'b01;
+				
+			end			
+		end
+		1: begin
+			uartStartSignal <= 0;
+			sendDelay <= sendDelay - 1;
+			if(sendDelay == 0) begin
+				uartSendState <= 2'b10;
+			end		
+		end
+	endcase
 		
 end	
-
-//wire [15:0] SSPrecvdData;
-//wire [3:0] motorNumW = SSPrecvdData[3:0];
-//wire newWordRecvd;
-//reg newWordRecvdR;  always @(posedge CLK_SE_AR) newWordRecvdR <= newWordRecvd;
-//wire newWordRecvd_risingedge = ((newWordRecvdR==1'b0)&&(newWordRecvd==1'b1));  
-//wire newWordRecvd_fallingedge = ((newWordRecvdR==1'b1)&&(newWordRecvd==1'b0));  
-
-//wire [15:0] dataToTransfer = curPosition[0][19:4];
-//reg  [15:0] dataToTransfer;
-//reg AGPIO_4_SSELR;  always @(posedge CLK_SE_AR) AGPIO_4_SSELR <= AGPIO_4_SSEL;
-//wire AGPIO_4_SSEL_fallingedge = ((AGPIO_4_SSELR==1'b1)&&(AGPIO_4_SSEL==1'b0)); 
-//SSP ssp(.clk(CLK_SE_AR), .SCK(AGPIO_1_SCK), .MOSI(AGPIO_2_MOSI), .MISO(AGPIO_3_MISO), .SSEL(AGPIO_4_SSEL), .recvdData(SSPrecvdData), .word_received(newWordRecvd), .wordDataToSend(dataToTransfer), .SCK_risingedgeDeb(AGPIO[7]));
-
-//parameter wait_cmd_state = 0;
-//parameter sendCurrentPosition_state = 0;
-
-//reg [3:0] state = wait_cmd_state;
-//reg [3:0] motorNum;
-
-//reg [9:0] lowerPosSignal;
-//assign AGPIO[5] = newWordRecvd;
-
-//initial begin
-//	pospos[0] = 32'h000aaaab;
-//	pospos[1] = 32'hfffffffb;
-//end
-//always @(posedge CLK_SE_AR) begin
-//
-//	if(newWordRecvd_risingedge) begin
-//		case(SSPrecvdData[15:13]) 
-//			3'd0: begin				//num reset
-//				motorNum <= motorNumW; 		  //motorNum  not yet locked							
-//			end					  
-//			3'd1: begin					
-//				dataToTransfer[15:0] <= "OK";
-//			end
-//			3'd2: begin			//div
-//				
-//				dataToTransfer[15:0] <= "OK";
-//			end			
-//			3'd3: begin			//ena
-//				
-//				dataToTransfer[15:0] <= "OK";					
-//			end			
-//			3'd4: begin		   //empty. only get cur pos				
-//			end
-//			3'd5: begin							
-//			end
-//			3'd6: begin			//reserv				
-//			end
-//			3'd7: begin			//reserv			
-//			end
-//
-//		endcase
-//	end
-//	if(newWordRecvd_fallingedge) begin
-//			case(SSPrecvdData[15:13]) 
-//			3'd0: begin				//num reset
-//				posReset[motorNum] <= SSPrecvdData[4];	//resetBit
-//				dataToTransfer[15:0] <= curPositionW[motorNum][15:0];
-//			end					  
-//			3'd1: begin	
-//				moveDir[motorNum] <=  SSPrecvdData[0];	//dirBit				
-//			end
-//			3'd2: begin			//div
-//				divider[motorNum] <= SSPrecvdData[12:0];				
-//			end			
-//			3'd3: begin			//ena
-//				stepClockEna[motorNum] <= SSPrecvdData[0];	//enabit			
-//			end			
-//			3'd4: begin		   //empty. only get cur pos
-//				dataToTransfer[15:0] <= curPositionW[motorNum][31:16];					
-//			end
-//			3'd5: begin			
-//				dataToTransfer[15:0] <= curPositionW[motorNum][31:16];					
-//			end
-//			3'd6: begin			//reserv
-//				dataToTransfer[15:0] <= curPositionW[motorNum][31:16];					
-//			end
-//			3'd7: begin			//reserv
-//				dataToTransfer[15:0] <= curPositionW[motorNum][31:16];					
-//			end
-//
-//		endcase
-//		
-//	end
 
 endmodule
 
