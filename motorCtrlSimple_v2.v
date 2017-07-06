@@ -35,11 +35,10 @@ always @(posedge CLK) begin
 	//end
 	
 	activeMode <= (stepsCnt != 0);
-	if(stepsCnt == 0) begin
+	if((stepsCnt==19'h0)&&(clockCounter==15'h0)) begin
 		stepsCnt <= stepsToGo;	
 		dividerLoc <= divider;
-		clockCounter <= 15'h0;
-		step <= 0;										
+		//clockCounter <= 15'h0;									
 	end
 	else begin	
 		if(clockCounter == 0) begin
