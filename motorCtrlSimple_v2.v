@@ -6,7 +6,7 @@ module motorCtrlSimple_v2(
 	//input moveDirInvers,
 	//input stepClockEna,	
 	input [13:0] stepsToGo,
-	output reg dir,
+	output reg dir = 0,
 	output reg step = 0,
 	//output reg signed [18:0] cur_position = 0,
 	output reg activeMode = 0
@@ -20,8 +20,8 @@ module motorCtrlSimple_v2(
 //assign active = (newPos != cur_position);
 reg [14:0] clockCounter = 0;
 reg [14:0] dividerLoc;
-reg [18:0] newPosLoc;
-reg [18:0] stepsCnt;
+//reg [18:0] newPosLoc;
+reg [18:0] stepsCnt = 0;
 
 
 //reg state = 0;
@@ -37,13 +37,15 @@ always @(posedge CLK) begin
 	activeMode <= (stepsCnt != 0);
 	if(stepsCnt == 0) begin
 		stepsCnt <= stepsToGo;	
-		dividerLoc <= divider;		
+		dividerLoc <= divider;
+		clockCounter <= 15'h0;
+		step <= 0;										
 	end
 	else begin	
 		if(clockCounter == 0) begin
 			step <= 1;	
 			clockCounter <= dividerLoc;	
-			stepsCnt <= stepsCnt - 1;
+			stepsCnt <= stepsCnt - 19'h1;
 			//if(cur_position == newPosLoc) begin
 			//	state <= 1'b0;				
 			//end
@@ -53,7 +55,7 @@ always @(posedge CLK) begin
 		end
 		else begin
 			clockCounter <= clockCounter - 13'h1;						
-			if(clockCounter == {1'b0, divider[12:1]})
+			if(clockCounter == {1'b0, dividerLoc[12:1]})
 				step <= 0;										
 		end		
 	end

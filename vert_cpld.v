@@ -17,7 +17,8 @@ input 	UART_RX,
 output 	UART_TX,
 
 output reg DebugPin1 = 0,
-output reg DebugPin2 = 0
+output reg DebugPin2 = 0,
+output reg DebugPin3 = 0
 );  
 
 wire rst;
@@ -60,13 +61,6 @@ for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
 //					.rd_en((~mrCtrlActive[i])&(~fifoEmpty[i])),
 //					.buf_empty(fifoEmpty[i]));
 //motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), .reset(posReset[i]), .divider(fifoDataOut[i][12:0]), .newPos(fifoDataOut[i][31:13]), .dir(dir[i]), .step(step[i]), .active(mrCtrlActive[i]));
-motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
-							 .reset(posReset[i]), 
-							 .divider(divider[i][14:0]), 
-							 .stepsToGo(stepCounter[i][13:0]), 
-							 .dir(dir[i]), 
-							 .step(step[i]), 
-							 .activeMode(mrCtrlActive[i]));
 
 //always @(posedge CLK_SE_AR) begin
 //	mrCtrlActiveR[i] <= mrCtrlActive[i];
@@ -75,26 +69,25 @@ motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR),
 //		stepCounter[i]<= 0;
 //	end
 //		
-//end						 
+//end	
 
-							 
+motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
+							 .reset(posReset[i]), 
+							 .divider(divider[i][14:0]), 
+							 .stepsToGo(stepCounter[i][13:0]), 
+							 .dir(dir[i]), 
+							 .step(step[i]), 
+							 .activeMode(mrCtrlActive[i]));
 end
 endgenerate
 
-//generate
-//for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
-//end
-//endgenerate
-
-
 reg [31:0] timerCounter; always @(posedge CLK_SE_AR) timerCounter <= timerCounter + 31'h1;
-
 
 wire uartRxDataReady;
 wire [7:0] uartRxData;
-reg uartRxDataReadyL; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
+reg uartRxDataReadyL=1'b0; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
 wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
-wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
+//wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
 async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
 																					.RxD(UART_RX), 
@@ -103,25 +96,30 @@ async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
 	
 reg [3:0] uartRecvState = 0;	
 reg [3:0] curMrCtrl = 0;
-
 reg [31:0] uartCmd;
-
+integer c;
 always @(posedge CLK_SE_AR) begin
+	DebugPin3 <= uartRxDataReadyPE;
 	if(uartRxDataReadyPE) begin
 		if(uartRecvState == 0) begin
-			curMrCtrl <= uartRxData;
+			curMrCtrl <= uartRxData[3:0];
+			uartRecvState <= uartRecvState + 4'h1;
 		end
 		else if(uartRecvState < 4) begin 
-			uartRecvState <= uartRecvState +1;
-		end else if(uartRecvState == 4) begin
+			uartRecvState <= uartRecvState + 4'h1;
+		end 
+		else if(uartRecvState == 4) begin
 			uartRecvState <= 0;
 			//fifoWrReq[curMrCtrl] <= 1'b1;
 			//uartCmd <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};
 			//uartCmdRecvData[curMrCtrl] <= uartCmd;
 			if(dataPending[curMrCtrl] == 0) begin
-				divider[curMrCtrl] <= uartCmd[14:0];
-				stepCounter[curMrCtrl] <= uartCmd[31:15];		
+				divider[curMrCtrl] <= uartCmd[18:4];
+				stepCounter[curMrCtrl] <= uartCmd[31:19];		
 				dataPending[curMrCtrl] <= 1;
+				
+				//divider[9] <= 15'hff;
+				//stepCounter[9] <= 14'h6;
 			end
 			DebugPin2 <= 1'b1;
 		end		
@@ -132,22 +130,26 @@ always @(posedge CLK_SE_AR) begin
 	else begin	
 		//fifoWrReq <= 10'h0;
 		DebugPin1 <= 1'b0;
-		DebugPin2 <= 1'b0;		
+		DebugPin2 <= 1'b0;	
+	
+		mrCtrlActiveR <= mrCtrlActive;		
+		for ( c = 0; c < 10; c = c + 1) begin: lbl        
+			if({mrCtrlActive[c], mrCtrlActiveR[c]}==2'b10) begin
+				dataPending[c] <= 0;
+				stepCounter[c] <= 0;
+			end	
+		end		
 	end
 	
-	mrCtrlActiveR <= mrCtrlActive;
-	
-	if((mrCtrlActive[0]==1)&&(mrCtrlActiveR[0]==0)) begin
-		dataPending[0] <= 0;
-	end			
-	
-		
+
 end
 
 
 
+//endgenerate
 
-reg [7:0] sendDelay;
+
+reg [12:0] sendDelay;
 wire uartBusy; reg uartBusyR; 
 
 reg uartSendState = 0;
@@ -167,9 +169,10 @@ always @(posedge CLK_SE_AR) begin
 	case(uartSendState)
 		0:  begin
 			if(dataPending[9:0] != 10'h3ff) begin				
-				uartTxData[7:0] <= {uartSendPartNum, 3'h0, (uartSendPartNum==0)? dataPending[4:0]:dataPending[9:5]};
-				uartSendPartNum <= uartSendPartNum + 1;
-				sendDelay <= 8'hff;
+				uartTxData[7:0] <= {uartSendPartNum, 2'h0, (uartSendPartNum==0)? dataPending[4:0]:dataPending[9:5]};
+				//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
+				uartSendPartNum <= uartSendPartNum + 1'h1;
+				sendDelay <= 13'h1fff;
 				uartStartSignal <= 1;
 				uartSendState <= 1;
 				
@@ -177,7 +180,7 @@ always @(posedge CLK_SE_AR) begin
 		end
 		1: begin
 			uartStartSignal <= 0;
-			sendDelay <= sendDelay - 1;
+			sendDelay <= sendDelay - 13'h1;
 			if(sendDelay == 0) begin
 				uartSendState <= 0;
 			end		

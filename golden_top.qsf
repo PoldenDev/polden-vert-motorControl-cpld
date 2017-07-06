@@ -84,3 +84,4 @@ set_location_assignment PIN_18 -to dir[8]
 set_global_assignment -name VERILOG_FILE fifo_cust.v
 set_global_assignment -name MAXII_OPTIMIZATION_TECHNIQUE AREA
 set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS OFF
+set_location_assignment PIN_88 -to DebugPin3
