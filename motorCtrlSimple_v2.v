@@ -2,7 +2,7 @@ module motorCtrlSimple_v2(
 	input CLK,
 	input reset,
 	input [14:0] divider,
-	//input moveDir,
+	input moveDir,
 	//input moveDirInvers,
 	//input stepClockEna,	
 	input [13:0] stepsToGo,
@@ -38,6 +38,7 @@ always @(posedge CLK) begin
 	if((stepsCnt==19'h0)&&(clockCounter==15'h0)) begin
 		stepsCnt <= stepsToGo;	
 		dividerLoc <= divider;
+		dir <= moveDir;
 		//clockCounter <= 15'h0;									
 	end
 	else begin	
@@ -54,7 +55,7 @@ always @(posedge CLK) begin
 		end
 		else begin
 			clockCounter <= clockCounter - 13'h1;						
-			if(clockCounter == {1'b0, dividerLoc[12:1]})
+			if(clockCounter == {1'b0, dividerLoc[14:1]})
 				step <= 0;										
 		end		
 	end

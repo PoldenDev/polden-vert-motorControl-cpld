@@ -149,11 +149,11 @@ end
 //endgenerate
 
 
-reg [12:0] sendDelay;
+reg [17:0] sendDelay;
 wire uartBusy; reg uartBusyR; 
 
-reg uartSendState = 0;
-reg uartSendPartNum = 0;
+reg [1:0] uartSendState = 2'b00;
+//reg uartSendPartNum = 0;
 reg uartStartSignal = 0;
 reg [7:0] uartTxData;
 
@@ -167,24 +167,40 @@ async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
 																					
 always @(posedge CLK_SE_AR) begin
 	case(uartSendState)
-		0:  begin
+		2'b00:  begin
 			if(dataPending[9:0] != 10'h3ff) begin				
-				uartTxData[7:0] <= {uartSendPartNum, 2'h0, (uartSendPartNum==0)? dataPending[4:0]:dataPending[9:5]};
+				uartTxData[7:0] <= {1'b0, 2'h0, dataPending[4:0]};
 				//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
-				uartSendPartNum <= uartSendPartNum + 1'h1;
-				sendDelay <= 13'h1fff;
-				uartStartSignal <= 1;
-				uartSendState <= 1;
-				
+				//uartSendPartNum <= uartSendPartNum + 1'h1;				
+				uartStartSignal <= 1;				
+				sendDelay <= 18'h3fff;
+				uartSendState <= 2'b01;
 			end			
 		end
-		1: begin
-			uartStartSignal <= 0;
-			sendDelay <= sendDelay - 13'h1;
+		2'b01: begin
+			uartStartSignal <= 0;			
 			if(sendDelay == 0) begin
-				uartSendState <= 0;
-			end		
+				uartSendState <= 2'b10;
+			end
+			else begin
+				sendDelay <= sendDelay - 18'h1;
+			end			
+		end		
+		2'b10: begin			
+			uartTxData[7:0] <= {1'b1, 2'h0, dataPending[9:5]};
+			uartStartSignal <= 1;									
+			sendDelay <= 18'h3ffff;
+			uartSendState <= 2'b11;
 		end
+		2'b11: begin
+			uartStartSignal <= 0;					
+			if(sendDelay == 0) begin
+				uartSendState <= 2'b00;
+			end
+			else begin
+				sendDelay <= sendDelay - 18'h1;
+			end	
+		end		
 	endcase	
 end
 
