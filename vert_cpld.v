@@ -38,7 +38,8 @@ wire [9:0] mrCtrlActive;
 reg [9:0] mrCtrlActiveR;
 
 reg [14:0] divider[9:0];
-reg [13:0] stepCounter[9:0];
+reg [12:0] stepCounter[9:0];
+
 reg [9:0] dataPending = 0;
 
 
@@ -72,9 +73,9 @@ for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
 //end	
 
 motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
-							 .reset(posReset[i]), 
+							 .reset(posReset[i]),
 							 .divider(divider[i][14:0]), 
-							 .stepsToGo(stepCounter[i][13:0]), 
+							 .stepsToGo(stepCounter[i][12:0]), 
 							 .dir(dir[i]), 
 							 .step(step[i]), 
 							 .activeMode(mrCtrlActive[i]));
@@ -107,6 +108,7 @@ always @(posedge CLK_SE_AR) begin
 		end
 		else if(uartRecvState < 4) begin 
 			uartRecvState <= uartRecvState + 4'h1;
+			uartCmd[31:0] <= {uartRxData[7:0], uartCmd[31:8]};
 		end 
 		else if(uartRecvState == 4) begin
 			uartRecvState <= 0;
@@ -123,8 +125,7 @@ always @(posedge CLK_SE_AR) begin
 			end
 			DebugPin2 <= 1'b1;
 		end		
-		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};		
-		uartCmd <= {uartRxData[7:0], uartCmd[31:8]};
+		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};			
 		DebugPin1 <= 1'b1;
 	end	
 	else begin	
