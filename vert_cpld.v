@@ -209,7 +209,7 @@ always @(posedge CLK_SE_AR) begin
 		
 		
 		3'b100: begin
-			uartTxData[7:0] <= {2'h2, 1'b0, term[4:0]};
+			uartTxData[7:0] <= {2'h2, 1'b0, ~term[4:0]};
 			//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
 			//uartSendPartNum <= uartSendPartNum + 1'h1;				
 			uartStartSignal <= 1;				
@@ -226,7 +226,7 @@ always @(posedge CLK_SE_AR) begin
 			end	
 		end	
 		3'b110: begin
-			uartTxData[7:0] <= {2'h3, 1'b0, term[9:5]};
+			uartTxData[7:0] <= {2'h3, 1'b0, ~term[9:5]};
 			uartStartSignal <= 1;									
 			sendDelay <= delay_between_packs;
 			uartSendState <= 3'b111;
@@ -243,6 +243,7 @@ always @(posedge CLK_SE_AR) begin
 
 	endcase	
 end
+	
 
 endmodule
 
