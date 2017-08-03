@@ -12,6 +12,7 @@ output reg USER_LED0,
 // Motor 
 output [9:0] step,
 output [9:0] dir,
+input [9:0] term,
 
 input 	UART_RX,
 output 	UART_TX,
@@ -89,7 +90,7 @@ wire [7:0] uartRxData;
 reg uartRxDataReadyL=1'b0; always @(posedge CLK_SE_AR) uartRxDataReadyL <= uartRxDataReady;
 wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
 //wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
-async_receiver #(.ClkFrequency(24000000), .Baud(230400)) RX(.clk(CLK_SE_AR),
+async_receiver #(.ClkFrequency(24000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
 																					.RxD(UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
@@ -153,55 +154,93 @@ end
 reg [17:0] sendDelay;
 wire uartBusy; reg uartBusyR; 
 
-reg [1:0] uartSendState = 2'b00;
+reg [2:0] uartSendState = 2'b000;
 //reg uartSendPartNum = 0;
 reg uartStartSignal = 0;
 reg [7:0] uartTxData;
 
 //wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
-async_transmitter #(.ClkFrequency(24000000), .Baud(230400)) TX(.clk(CLK_SE_AR),
+async_transmitter #(.ClkFrequency(24000000), .Baud(115200)) TX(.clk(CLK_SE_AR),
 																					//.BitTick(uartTick1),
 																					.TxD(UART_TX), 
 																					.TxD_start(uartStartSignal), 
 																					.TxD_data(uartTxData),
 																					.TxD_busy(uartBusy));
 																					
+parameter delay_between_bytes=18'hfff;
+parameter delay_between_packs=18'h3ffff;
+	
 always @(posedge CLK_SE_AR) begin
 	case(uartSendState)
-		2'b00:  begin
-			if(dataPending[9:0] != 10'h3ff) begin				
-				uartTxData[7:0] <= {1'b0, 2'h0, dataPending[4:0]};
+		3'b000:  begin
+			//if(dataPending[9:0] != 10'h3ff) begin				
+				uartTxData[7:0] <= {2'h0, 1'b0, dataPending[4:0]};
 				//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
 				//uartSendPartNum <= uartSendPartNum + 1'h1;				
 				uartStartSignal <= 1;				
-				sendDelay <= 18'h3fff;
-				uartSendState <= 2'b01;
-			end			
+				sendDelay <= delay_between_bytes;
+				uartSendState <= 3'b001;
+			//end			
 		end
-		2'b01: begin
+		3'b001: begin
 			uartStartSignal <= 0;			
 			if(sendDelay == 0) begin
-				uartSendState <= 2'b10;
+				uartSendState <= 3'b010;
 			end
 			else begin
 				sendDelay <= sendDelay - 18'h1;
 			end			
 		end		
-		2'b10: begin			
-			uartTxData[7:0] <= {1'b1, 2'h0, dataPending[9:5]};
+		3'b010: begin			
+			uartTxData[7:0] <= {2'h1, 1'b0, dataPending[9:5]};
 			uartStartSignal <= 1;									
-			sendDelay <= 18'h3ffff;
-			uartSendState <= 2'b11;
+			sendDelay <= delay_between_bytes;
+			uartSendState <= 3'b011;
 		end
-		2'b11: begin
+		3'b011: begin
 			uartStartSignal <= 0;					
 			if(sendDelay == 0) begin
-				uartSendState <= 2'b00;
+				uartSendState <= 3'b100;
 			end
 			else begin
 				sendDelay <= sendDelay - 18'h1;
 			end	
-		end		
+		end				
+		
+		
+		3'b100: begin
+			uartTxData[7:0] <= {2'h2, 1'b0, term[4:0]};
+			//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
+			//uartSendPartNum <= uartSendPartNum + 1'h1;				
+			uartStartSignal <= 1;				
+			sendDelay <= delay_between_bytes;
+			uartSendState <= 3'b101;	
+		end	
+		3'b101: begin
+			uartStartSignal <= 0;			
+			if(sendDelay == 0) begin
+				uartSendState <= 3'b110;
+			end
+			else begin
+				sendDelay <= sendDelay - 18'h1;
+			end	
+		end	
+		3'b110: begin
+			uartTxData[7:0] <= {2'h3, 1'b0, term[9:5]};
+			uartStartSignal <= 1;									
+			sendDelay <= delay_between_packs;
+			uartSendState <= 3'b111;
+		end	
+		3'b111: begin
+			uartStartSignal <= 0;					
+			if(sendDelay == 0) begin
+				uartSendState <= 3'b000;
+			end
+			else begin
+				sendDelay <= sendDelay - 18'h1;
+			end	
+		end	
+
 	endcase	
 end
 
