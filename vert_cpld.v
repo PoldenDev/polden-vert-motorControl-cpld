@@ -19,7 +19,7 @@ output 	UART_TX,
 
 output DebugPin1 = 0,
 output reg DebugPin2 = 0,
-output DebugPin3 = 0
+output reg DebugPin3 = 0
 );  
 
 wire rst;
@@ -94,7 +94,7 @@ wire uartRxDataReadyPE = ((uartRxDataReady==1'b1)&&(uartRxDataReadyL==1'b0));
 wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
 
 assign DebugPin1 = uartRxDataReadyPE;
-assign DebugPin3 = uartRxDataReadyPE;
+//assign DebugPin3 = uartRxDataReadyPE;
 
 async_receiver #(.ClkFrequency(24000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
@@ -105,6 +105,7 @@ async_receiver #(.ClkFrequency(24000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 reg [3:0] uartRecvState = 0;	
 reg [3:0] curMrCtrl = 0;
 reg [39:0] uartCmd;
+reg [31:0] uartTimeOutCounter = 32'h0;
 integer c;
 always @(posedge CLK_SE_AR) begin
 	if(uartRxDataReadyPE) begin
@@ -115,12 +116,27 @@ always @(posedge CLK_SE_AR) begin
 		uartRecvState <= uartRecvState + 4'h1;		
 		uartCmd[39:0] <= {uartRxData[7:0], uartCmd[39:8]}; 		
 		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};			
-		//DebugPin1 <= 1'b1;
+		//DebugPin1 <= 1'b1;				
 	end	
-
+	else begin
+		if(uartTimeOutCounter == 32'h0) begin
+			uartRecvState <= 4'h0;	
+			DebugPin3 <= 1;
+		end
+		else begin
+			DebugPin3 <= 0;
+		end
+	end
+	
+	if(uartRxDataReadyPE) begin
+		uartTimeOutCounter <= 32'h249f00;		
+	end
+	else begin
+		uartTimeOutCounter <= uartTimeOutCounter - 32'h1;		
+	end
 	
 	DebugPin2 <=  uartRxDataReadyNE && (uartRecvState == 5);
-	if(uartRxDataReadyNE) begin
+	if(uartRxDataReadyNE) begin	
 		if(uartRecvState == 5) begin
 			uartRecvState <= 0;		
 			//fifoWrReq[curMrCtrl] <= 1'b1;
