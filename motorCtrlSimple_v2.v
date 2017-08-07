@@ -35,14 +35,17 @@ always @(posedge CLK) begin
 		//cur_position <= 19'h0;	
 	//end
 	
-	activeMode <= (stepsCnt != 0);
+	//activeMode <= ((stepsCnt != 0)||(clockCounter!=15'h0));
 	if((stepsCnt==19'h0)&&(clockCounter==15'h0)) begin
+		activeMode <= 0;		
 		stepsCnt <= stepsToGo[14:0];	
 		dividerLoc <= divider;
 		dir <= dirInput;
-		//clockCounter <= 15'h0;									
+		//clockCounter <= 15'h0;	
+		
 	end
 	else begin	
+		activeMode <= 1;		
 		if(clockCounter == 0) begin
 			step <= 1;	
 			clockCounter <= dividerLoc;	

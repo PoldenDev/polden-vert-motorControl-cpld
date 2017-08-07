@@ -19,7 +19,10 @@ output 	UART_TX,
 
 output DebugPin1 = 0,
 output reg DebugPin2 = 0,
-output reg DebugPin3 = 0
+output reg DebugPin3 = 0,
+output DebugPin4,
+output DebugPin5,
+output DebugPin6
 );  
 
 wire rst;
@@ -45,6 +48,9 @@ reg dirReg[9:0];
 reg [9:0] dataPending = 0;
 
 
+assign DebugPin4 = step[0];
+assign DebugPin5 = mrCtrlActive[0];
+assign DebugPin6 = dataPending[0];
 genvar i;
 generate
 for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
@@ -172,7 +178,7 @@ end
 
 
 //endgenerate
-
+ 
 
 reg [17:0] sendDelay;
 wire uartBusy; reg uartBusyR; 
