@@ -101,7 +101,7 @@ wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
 assign DebugPin1 = uartRxDataReadyPE;
 //assign DebugPin3 = uartRxDataReadyPE;
 
-async_receiver #(.ClkFrequency(24000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
+async_receiver #(.ClkFrequency(25000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
 																					.RxD(UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
@@ -188,7 +188,7 @@ reg uartStartSignal = 0;
 reg [7:0] uartTxData;
 
 //wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
-async_transmitter #(.ClkFrequency(24000000), .Baud(115200)) TX(.clk(CLK_SE_AR),
+async_transmitter #(.ClkFrequency(25000000), .Baud(115200)) TX(.clk(CLK_SE_AR),
 																					//.BitTick(uartTick1),
 																					.TxD(UART_TX), 
 																					.TxD_start(uartStartSignal), 
