@@ -47,7 +47,7 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_89 -to CLK_SE_AR
-set_location_assignment PIN_120 -to USER_LED0
+set_location_assignment PIN_138 -to USER_LED0
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
 set_location_assignment PIN_8 -to UART_RX
 set_location_assignment PIN_12 -to UART_TX
@@ -85,16 +85,16 @@ set_global_assignment -name VERILOG_FILE fifo_cust.v
 set_global_assignment -name MAXII_OPTIMIZATION_TECHNIQUE AREA
 set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS OFF
 set_location_assignment PIN_88 -to DebugPin3
-set_location_assignment PIN_109 -to term[0]
-set_location_assignment PIN_108 -to term[1]
-set_location_assignment PIN_107 -to term[2]
-set_location_assignment PIN_106 -to term[3]
-set_location_assignment PIN_105 -to term[4]
-set_location_assignment PIN_103 -to term[5]
-set_location_assignment PIN_102 -to term[6]
-set_location_assignment PIN_101 -to term[7]
-set_location_assignment PIN_98 -to term[8]
-set_location_assignment PIN_97 -to term[9]
+set_location_assignment PIN_123 -to term[0]
+set_location_assignment PIN_124 -to term[1]
+set_location_assignment PIN_125 -to term[2]
+set_location_assignment PIN_127 -to term[3]
+set_location_assignment PIN_129 -to term[4]
+set_location_assignment PIN_130 -to term[5]
+set_location_assignment PIN_131 -to term[6]
+set_location_assignment PIN_16 -to term[7]
+set_location_assignment PIN_14 -to term[8]
+set_location_assignment PIN_144 -to term[9]
 set_location_assignment PIN_85 -to DebugPin4
 set_location_assignment PIN_86 -to DebugPin5
 set_location_assignment PIN_87 -to DebugPin6

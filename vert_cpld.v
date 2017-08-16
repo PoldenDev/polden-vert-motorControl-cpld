@@ -16,7 +16,6 @@ input [9:0] term,
 
 input 	UART_RX,
 output 	UART_TX,
-
 output DebugPin1 = 0,
 output reg DebugPin2 = 0,
 output reg DebugPin3 = 0,
