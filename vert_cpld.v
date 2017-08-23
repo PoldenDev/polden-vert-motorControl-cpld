@@ -21,7 +21,11 @@ output reg DebugPin2 = 0,
 output reg DebugPin3 = 0,
 output DebugPin4,
 output DebugPin5,
-output DebugPin6
+output DebugPin6,
+output DebugPin7,
+output DebugPin8,
+output DebugPin9,
+output debugPin106
 );  
 
 wire rst;
@@ -100,31 +104,48 @@ wire uartRxDataReadyNE = ((uartRxDataReady==1'b0)&&(uartRxDataReadyL==1'b1));
 
 assign DebugPin1 = uartRxDataReadyPE;
 //assign DebugPin3 = uartRxDataReadyPE;
+assign DebugPin7 = uartRxDataReady;
+//wire RxD_endofpacket_wire, RxD_idle_wire;
+//assign DebugPin8 = RxD_endofpacket_wire;
+//assign DebugPin9 = RxD_idle_wire;
 
 async_receiver #(.ClkFrequency(25000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 													 								//.BitTick(uartTick1),
 																					.RxD(UART_RX), 
 																					.RxD_data_ready(uartRxDataReady), 
-																					.RxD_data(uartRxData));
+																					.RxD_data(uartRxData)/*,
+																					.RxD_endofpacket(RxD_endofpacket_wire),
+																					.RxD_idle(RxD_idle_wire)*/);
 	
 reg [3:0] uartRecvState = 0;	
 reg [3:0] curMrCtrl = 0;
 reg [39:0] uartCmd;
-reg [31:0] uartTimeOutCounter = 32'h0;
+reg [17:0] uartTimeOutCounter = 18'h0;
+
+wire sendDriveStatus = uartRxDataReady && (uartRecvState==0) && (uartRxData[3:0] == 4'hF);
+assign debugPin106 = sendDriveStatus;
 integer c;
 always @(posedge CLK_SE_AR) begin
 	if(uartRxDataReadyPE) begin
 		if(uartRecvState == 0) begin
-			curMrCtrl <= uartRxData[3:0];
-			//uartRecvState <= uartRecvState + 4'h1;
-		end		
-		uartRecvState <= uartRecvState + 4'h1;		
+			if(uartRxData[3:0] == 4'hF) begin				
+				uartRecvState <= 0;					
+			end
+			else begin
+				curMrCtrl <= uartRxData[3:0];
+				uartRecvState <= uartRecvState + 4'h1;
+			end		
+		end
+		else begin
+			uartRecvState <= uartRecvState + 4'h1;		
+			
+			//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};			
+			//DebugPin1 <= 1'b1;				
+		end
 		uartCmd[39:0] <= {uartRxData[7:0], uartCmd[39:8]}; 		
-		//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};			
-		//DebugPin1 <= 1'b1;				
 	end	
-	else begin
-		if(uartTimeOutCounter == 32'h0) begin
+	else begin		
+		if(uartTimeOutCounter == 18'h0) begin
 			uartRecvState <= 4'h0;	
 			DebugPin3 <= 1;
 		end
@@ -133,11 +154,12 @@ always @(posedge CLK_SE_AR) begin
 		end
 	end
 	
+	
 	if(uartRxDataReadyPE) begin
-		uartTimeOutCounter <= 32'h249f00;		
+		uartTimeOutCounter <= 18'h3ffff;		 
 	end
-	else begin
-		uartTimeOutCounter <= uartTimeOutCounter - 32'h1;		
+	else if(uartTimeOutCounter>0) begin
+		uartTimeOutCounter <= uartTimeOutCounter - 18'h1;		
 	end
 	
 	DebugPin2 <=  uartRxDataReadyNE && (uartRecvState == 5);
@@ -182,11 +204,11 @@ end
 reg [17:0] sendDelay;
 wire uartBusy; reg uartBusyR; 
 
-reg [2:0] uartSendState = 2'b000;
+reg [2:0] uartSendState = 3'b111;
 //reg uartSendPartNum = 0;
 reg uartStartSignal = 0;
 reg [7:0] uartTxData;
-
+assign DebugPin8 = uartStartSignal;
 //wire uart19200StartSignal = (timerCounter[12:0] == 13'h1FFF);
 async_transmitter #(.ClkFrequency(25000000), .Baud(115200)) TX(.clk(CLK_SE_AR),
 																					//.BitTick(uartTick1),
@@ -197,18 +219,22 @@ async_transmitter #(.ClkFrequency(25000000), .Baud(115200)) TX(.clk(CLK_SE_AR),
 																					
 parameter delay_between_bytes=18'hfff;
 parameter delay_between_packs=18'h3ffff;
-	
+
 always @(posedge CLK_SE_AR) begin
 	case(uartSendState)
 		3'b000:  begin
+			if(sendDriveStatus == 1) begin
 			//if(dataPending[9:0] != 10'h3ff) begin				
 				uartTxData[7:0] <= {2'h0, 1'b0, dataPending[4:0]};
 				//uartTxData[7:0] <= {uartSendPartNum, 3'h0, uartSendPartNum+4'h1};
 				//uartSendPartNum <= uartSendPartNum + 1'h1;				
 				uartStartSignal <= 1;				
-				sendDelay <= delay_between_bytes;
-				uartSendState <= 3'b001;
-			//end			
+				sendDelay <= delay_between_bytes;	
+				uartSendState <= 3'b001;			
+			end		
+			else begin
+				uartStartSignal <= 0;
+			end
 		end
 		3'b001: begin
 			uartStartSignal <= 0;			
@@ -261,13 +287,14 @@ always @(posedge CLK_SE_AR) begin
 		end	
 		3'b111: begin
 			uartStartSignal <= 0;					
-			if(sendDelay == 0) begin
+			//if(sendDriveStatus == 1) begin
 				uartSendState <= 3'b000;
-			end
-			else begin
-				sendDelay <= sendDelay - 18'h1;
-			end	
+			//end
 		end	
+		
+		default: begin
+			uartStartSignal <= 0;		
+		end
 
 	endcase	
 end
