@@ -19,22 +19,24 @@ output 	UART_TX,
 output DebugPin1 = 0,
 output reg DebugPin2 = 0,
 output reg DebugPin3 = 0,
-output DebugPin4,
+output DebugPin_85,
 output DebugPin5,
 output DebugPin6,
 output DebugPin7,
 output DebugPin8,
 output DebugPin9,
-output debugPin106
+output debugPin106,
+output DebugPin_86,
+output DebugPin_87
 );  
 
 wire rst;
 
-reg [32:0] counter = 0; 
-always @(posedge CLK_SE_AR) begin
-	USER_LED0 <= counter[24];
-	counter <= counter + 1;
-end
+//reg [32:0] counter = 0; 
+//always @(posedge CLK_SE_AR) begin
+//	USER_LED0 <= counter[24];
+//	counter <= counter + 1;
+//end
 
 reg [9:0] posReset = 0;
 //reg [9:0] fifoWrReq=0;
@@ -51,37 +53,13 @@ reg dirReg[9:0];
 reg [9:0] dataPending = 0;
 
 
-assign DebugPin4 = step[0];
+assign DebugPin_87 = step[0];
+assign DebugPin_86 = dir[0];
 assign DebugPin5 = mrCtrlActive[0];
 assign DebugPin6 = dataPending[0];
 genvar i;
 generate
 for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
-
-//cmdFifo fifo(.clock(CLK_SE_AR), 
-//				.data(uartCmd), 
-//				.rdreq((~mrCtrlActive[i])&(~fifoEmpty[i])), 
-//				.wrreq(fifoWrReq[i]), 
-//				.q(fifoDataOut[i]), 
-//				.empty(fifoEmpty[i]));
-				
-//fifo_cust fifo(.clk(CLK_SE_AR), 
-//					.rst(rst), 
-//					.buf_in(uartCmd), 
-//					.buf_out(fifoDataOut[i]), 
-//					.wr_en(fifoWrReq[i]),
-//					.rd_en((~mrCtrlActive[i])&(~fifoEmpty[i])),
-//					.buf_empty(fifoEmpty[i]));
-//motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), .reset(posReset[i]), .divider(fifoDataOut[i][12:0]), .newPos(fifoDataOut[i][31:13]), .dir(dir[i]), .step(step[i]), .active(mrCtrlActive[i]));
-
-//always @(posedge CLK_SE_AR) begin
-//	mrCtrlActiveR[i] <= mrCtrlActive[i];
-//	if((mrCtrlActive[i]==1)&&(mrCtrlActiveR[i]==0)) begin
-//		divider[i] <= 0;
-//		stepCounter[i]<= 0;
-//	end
-//		
-//end	
 
 motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
 							 .reset(posReset[i]),
@@ -297,6 +275,8 @@ always @(posedge CLK_SE_AR) begin
 		end
 
 	endcase	
+
+
 end
 	
 
