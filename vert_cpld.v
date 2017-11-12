@@ -46,8 +46,8 @@ wire [9:0] fifoEmpty;
 wire [9:0] mrCtrlActive;
 reg [9:0] mrCtrlActiveR;
 
-reg [15:0] divider[9:0];
-reg [10:0] stepCounter[9:0];
+reg [14:0] divider[9:0];
+reg [11:0] stepCounter[9:0];
 reg dirReg[9:0];
 
 reg [9:0] dataPending = 0;
@@ -63,8 +63,8 @@ for(i = 0; i < 10; i = i + 1 ) begin : motorControlBlock
 
 motorCtrlSimple_v2 mr(.CLK(CLK_SE_AR), 
 							 .reset(posReset[i]),
-							 .divider(divider[i][15:0]), 
-							 .stepsToGo(stepCounter[i][10:0]), 
+							 .divider(divider[i][14:0]), 
+							 .stepsToGo(stepCounter[i][11:0]), 
 							 .dirInput(dirReg[i]),
 							 .dir(dir[i]), 
 							 .step(step[i]), 
@@ -97,7 +97,7 @@ async_receiver #(.ClkFrequency(25000000), .Baud(115200)) RX(.clk(CLK_SE_AR),
 	
 reg [3:0] uartRecvState = 0;	
 reg [3:0] curMrCtrl = 0;
-reg [39:0] uartCmd;
+reg [31:0] uartCmd;
 reg [17:0] uartTimeOutCounter = 18'h0;
 
 wire sendDriveStatus = uartRxDataReady && (uartRecvState==0) && (uartRxData[3:0] == 4'hF);
@@ -120,7 +120,7 @@ always @(posedge CLK_SE_AR) begin
 			//uartCmdRecvData[curMrCtrl] <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};			
 			//DebugPin1 <= 1'b1;				
 		end
-		uartCmd[39:0] <= {uartRxData[7:0], uartCmd[39:8]}; 		
+		uartCmd[31:0] <= {uartRxData[7:0], uartCmd[31:8]}; 		
 	end	
 	else begin		
 		if(uartTimeOutCounter == 18'h0) begin
@@ -142,14 +142,14 @@ always @(posedge CLK_SE_AR) begin
 	
 	DebugPin2 <=  uartRxDataReadyNE && (uartRecvState == 5);
 	if(uartRxDataReadyNE) begin	
-		if(uartRecvState == 5) begin
+		if(uartRecvState == 4) begin
 			uartRecvState <= 0;		
 			//fifoWrReq[curMrCtrl] <= 1'b1;
 			//uartCmd <= {uartRxData[7:0], uartCmdRecvData[curMrCtrl][31:8]};
 			//uartCmdRecvData[curMrCtrl] <= uartCmd;
 			if(dataPending[curMrCtrl] == 0) begin
-				divider[curMrCtrl] <= uartCmd[19:4];
-				stepCounter[curMrCtrl] <= uartCmd[30:20];		
+				divider[curMrCtrl] <= uartCmd[18:4];
+				stepCounter[curMrCtrl] <= uartCmd[30:19];		
 				dirReg[curMrCtrl] <= uartCmd[31];
 				dataPending[curMrCtrl] <= 1;
 				
